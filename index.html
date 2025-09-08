@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Edna Kobo | BI Analyst Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap & Icons -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Swiper.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+
+  <!-- Vegas.js -->
+  <link href="css/vegas.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #1f2937;
+      color: #fff;
+    }
+
+    /* Buttons */
+    .custom-btn {
+      background-color: #30a80c;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      color: #fff;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .custom-btn:hover {
+      background-color: #195e04;
+      color: #fff;
+    }
+
+    .section-padding { padding: 80px 0; }
+    .text-accent { color: #41ba09; }
+
+    /* Hero Section */
+    .hero-section {
+      background: url('images/Main Page/1.png') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      color: #fff;
+    }
+    .hero-overlay {
+      position: absolute;
+      top:0; left:0; width:100%; height:100%;
+      background: rgba(0, 0, 0, 0.25);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      border-radius: 12px;
+    }
+    .hero-text { text-align: left; }
+
+    /* About Video Section */
+    .about-video-wrap {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      height: 100%;
+      min-height: 300px;
+    }
+    .about-video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-text-overlay {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+    }
+
+    /* Skills Cards */
+    .skill-card {
+      background: rgba(54, 54, 54, 0.7); 
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 15px;
+    }
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(38, 202, 5, 0.6);
+    }
+    .skill-card .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .skill-card .card-text {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.4;
+    }
+
+    /* Skills Section */
+    #skills {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    color: #fff;
+
+  /* Full background image */
+     background: url('images/Main Page/Beige Photocentric Minimalist Interior Designer Virtual Background.png') no-repeat center center;
+     background-size: cover; /* fills the section completely */
+  
+    /* Dark overlay for readability */
+     background-color: rgba(50, 51, 51, 0.8);
+     background-blend-mode: overlay;
+   }
+
+    /* Swiper */
+    .swiper { padding-bottom: 50px; }
+    .swiper-button-next, .swiper-button-prev { color: #41ba09; }
+    .swiper-pagination-bullet-active { background: #41ba09; }
+
+    /* Footer */
+    .site-footer {
+      background: 
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+        url('images/12888892_1920_1080_30fps.mp4') center/cover no-repeat;
+    }
+    .site-footer p, .site-footer a, .site-footer em {
+      font-weight: 300;
+      color: #fff;
+    }
+    .site-footer .social-icon {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+    }
+    .site-footer .social-icon-link {
+      color: #30a80c;
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+    .site-footer .social-icon-link:hover { color: #238107; }
+    .site-footer .copyright-text {
+      font-size: 0.75rem;
+      text-align: center;
+      margin-top: 20px;
+      display: block;
+    }
+   .button-group .custom-btn {
+    display: inline-block;
+    width: 180px; /* same width for both buttons */
+    text-align: center;
+    }
+</style>
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-accent" href="#">Edna Kobo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-lg-auto">
+          <li class="nav-item"><a class="nav-link" href="#section_1">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#section_2">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="youtube.html">YouTube</a></li>
+          <li class="nav-item"><a class="nav-link" href="Client Page.html">Partnerships</a></li>
+        </ul>
+        <div class="ms-lg-3">
+          <a class="btn custom-btn" href="Consultation.html">Book Free <i class="bi-arrow-up-right ms-2"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-section" id="section_1">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-md-8 col-12">
+          <div class="hero-text">
+            <h1 class="text-white mb-3">Hi, I’m <span class="text-accent">Edna Kobo</span></h1>
+            <h3 class="text-white mb-3">Business Intelligence Analyst</h3>
+            <p class="lead text-white mb-4">
+              I design data-driven solutions that turn complex information into clear, interactive stories, empowering smarter decisions and driving real business impact. 
+            <p>
+               <a class="btn custom-btn me-3" href="CV.html">Review CV</a>
+               <a class="btn custom-btn" href="#projects"> View Projects</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+<section class="about-section section-padding" id="section_2" style="background:#1f2937;">
+  <div class="container" style="overflow-x:auto; padding-bottom:20px; position:relative;">
+    <div class="row align-items-center flex-nowrap" style="min-width:900px;">
+      
+      <!-- Video -->
+      <div class="col-lg-5 col-11 mb-4 mb-lg-0 flex-shrink-0" style="min-width:450px;">
+        <div class="about-video-wrap rounded shadow-lg" style="position:relative; overflow:hidden; min-height:300px;">
+          <video autoplay loop muted style="width:100%; height:100%; object-fit:cover; display:block;">
+            <source src="images/Main Page/Blue Clean Digital Marketing Strategy Mobile Video (1).mp4 " type="video/mp4">
+          </video>
+          <div class="video-overlay" style="position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.25);"></div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="col-lg-6 col-12 flex-shrink-0" style="min-width:450px;">
+        <div class="about-text-overlay p-4 rounded" style="
+          background: rgba(27, 25, 25, 0.1); 
+          backdrop-filter: blur(10px); 
+          -webkit-backdrop-filter: blur(10px); 
+          border: 1px solid rgba(255,255,255,0.2); 
+          box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+          color: #fff;
+        ">
+          <h2 class="text-accent mb-3">About Me</h2>
+          <p>My journey in data began with a <strong>Data Science program at ExploreAI (now Sand Technologies) in 2023</strong>, where I developed a strong foundation in <strong>data visualization and actionable reporting</strong>.</p>
+          <p>During my <strong>internship at BCX</strong>, I gained hands-on experience in <strong>business intelligence, market solutions, and performance analytics</strong>, applying data-driven methods to solve real-world business challenges.</p>
+          <p>Currently, I am expanding my expertise in <strong>BI analysis at one of South Africa’s leading telecommunications companies</strong>, with a focus on delivering <strong>strategic insights</strong> that support decision-making and drive performance.</p>
+          <p>I am passionate about <strong>transforming complex datasets into clear, compelling narratives</strong> that not only inform but also inspire action across teams and organizations.</p>
+          <a href="#skills" class="btn custom-btn mt-3">Explore My Skills</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Optional Gradient Fade for Horizontal Scroll -->
+    <div style="position:absolute; top:0; left:0; width:50px; height:100%; pointer-events:none; background: linear-gradient(to right, #192230, transparent);"></div>
+    <div style="position:absolute; top:0; right:0; width:50px; height:100%; pointer-events:none; background: linear-gradient(to left, #192230, transparent);"></div>
+
+  </div>
+</section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills-section text-white py-5" style="position: relative; overflow: hidden; min-height: 100vh;">
+    <div class="overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:1;"></div>
+    <div class="container position-relative" style="z-index:2;">
+      <h2 class="text-accent text-center mb-5">My Skills</h2>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><div class="card skill-card"><div class="card-body text-center"><h5 class="card-title fw-bold">Python</h5><p class="card-text">Data analysis, visualization, and automation with pandas, seaborn, and matplotlib.</p></div></div></div>
+          <div class="swiper-slide"><div class="card skill-card"><div class="card-body text-center"><h5 class="card-title fw-bold">SQL & Databases</h5><p class="card-text">Efficient queries, relational database design, and performance optimization.</p></div></div></div>
+          <div class="swiper-slide"><div class="card skill-card"><div class="card-body text-center"><h5 class="card-title fw-bold">Power BI / Tableau</h5><p class="card-text">Building dashboards that transform raw data into actionable insights.</p></div></div></div>
+          <div class="swiper-slide"><div class="card skill-card"><div class="card-body text-center"><h5 class="card-title fw-bold">Excel & Data Modeling</h5><p class="card-text">Advanced formulas, pivot tables, and models for strategic decision-making.</p></div></div></div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+<section id="projects" class="projects-section section-padding" style="background:#1f2937; color:#fff;">
+  <div class="container">
+    <h2 class="text-accent text-center mb-5">My Projects</h2>
+    <div class="row g-4">
+
+      <!-- OpenServe Survey Data Project -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card skill-card">
+          <div class="card-body">
+            <h5 class="card-title">Survey Analysis (OpenServe)</h5>
+            <p class="card-text">
+              Analyzed customer survey responses to evaluate the performance of Business Development Managers and Service Managers through using Excel. 
+              <strong>Note:</strong> Project details cannot be shared publicly due to confidentiality agreements.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BCX Dashboard -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card skill-card">
+          <div class="card-body">
+            <h5 class="card-title">Opportunity Win vs Loss Dashboard (BCX)</h5>
+            <p class="card-text">
+              Developed a dashboard analyzing opportunities won versus lost, providing insights into trends and patterns while adhering to NDA confidentiality requirements. 
+              <strong>Note:</strong> Project access is restricted due to NDA agreements.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Eskom Dashboard -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card skill-card">
+          <div class="card-body">
+            <h5 class="card-title">Eskom Dashboard (Explore AI Intake)</h5>
+            <p class="card-text">
+              Created an interactive dashboard for Eskom during the Explore AI program, visualizing key metrics and trends while respecting project confidentiality.
+              <strong>Note:</strong> The project was completed during the program intake period.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- SwiperJS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: { delay: 3000 },
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+      pagination: { el: ".swiper-pagination", clickable: true },
+      breakpoints: { 0: { slidesPerView: 1 }, 768: { slidesPerView: 2 }, 1200: { slidesPerView: 3 } }
+    });
+  </script>
+
+  <!-- FOOTER -->
+<footer class="site-footer section-padding position-relative" style="background-color:#000;">
+  <!-- Optional Video Background (can be removed if you want solid black) -->
+  <video autoplay muted loop playsinline
+         style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:1;">
+    <source src="images/Main Page/12888892_1920_1080_30fps.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Overlay for readability -->
+  <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.85); z-index:2;"></div>
+
+  <!-- Footer Content -->
+  <div class="container position-relative" style="z-index:3; color:#fff;">
+    <div class="row">
+
+      <!-- Location & Social -->
+      <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+        <em class="d-block mb-2" style="color:#aaa;">Where to find Me?</em>
+        <strong><i class="bi-geo-alt me-2"></i> South Africa</strong>
+        <ul class="list-inline mt-3">
+          <li class="list-inline-item"><a href="#" class="bi-facebook" style="color:#41ba09; font-size:1.2rem;"></a></li>
+          <li class="list-inline-item"><a href="https://x.com/minthu" target="_blank" class="bi-twitter" style="color:#41ba09; font-size:1.2rem;"></a></li>
+          <li class="list-inline-item"><a href="#" class="bi-whatsapp" style="color:#41ba09; font-size:1.2rem;"></a></li>
+        </ul>
+      </div>
+
+      <!-- Consultation -->
+      <div class="col-lg-3 col-12 mb-4 mb-lg-0">
+        <em class="d-block mb-2" style="color:#aaa;">Book Free Consultation</em>
+        <p class="mb-1"><strong>Schedule:</strong> <a href="https://calendar.google.com/calendar" target="_blank" style="color:#41ba09;">Book Free</a></p>
+        <p class="mb-0"><strong>Email:</strong> <a href="mailto:ednamosima86@gmail.com" style="color:#41ba09;">ednamosima86@gmail.com</a></p>
+      </div>
+
+      <!-- Working Hours -->
+      <div class="col-lg-5 col-12">
+        <em class="d-block mb-2" style="color:#aaa;">Working Hours</em>
+        <ul class="list-unstyled mb-0">
+          <li>Monday - Friday: <strong>9:00 - 17:00</strong></li>
+          <li>Saturday: <strong>Closed</strong></li>
+          <li>Sunday: <strong>Closed</strong></li>
+        </ul>
+      </div>
+
+      <!-- Copyright -->
+      <div class="col-12 text-center mt-4">
+        <p class="mb-1" style="font-size:0.75rem;">&copy; 2025 Edna Kobo. All Rights Reserved.</p>
+        <p class="mb-0" style="font-size:0.75rem; color:#aaa;"></p>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+  <!-- JS -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/vegas.min.js"></script>
+</body>
+</html>
