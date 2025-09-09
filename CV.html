@@ -107,9 +107,55 @@ h5 {
     border-radius: 12px;
 }
 
+/* Certificate Section Styling */
+.certificate-section {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+.certificate-section .section-header {
+    text-align: center;
+    background: rgba(0,0,0,0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+.certificate-section .section-header h2 {
+    color: #41ba09;
+    margin-bottom: 15px;
+}
+.certificate-section .section-header p {
+    color: #eee;
+    font-size: 1.1rem;
+}
+.certificate-section .clients-grid {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+.certificate-section .client-item {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.certificate-section .client-item img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+.certificate-section .client-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
 @media (max-width: 992px) {
     .cv-container { flex-direction: column; }
     .cv-left, .cv-right { flex: 1 1 100%; }
+}
+@media (max-width: 768px) {
+    .certificate-section .client-item { max-width: 95%; }
 }
 </style>
 </head>
@@ -218,9 +264,23 @@ h5 {
         <p>07/2023 | Gauteng</p>
         <p>Built recommender using MovieLens dataset, achieving Kaggle RMSE score of 0.78330 for predictions.</p>
       </div>
-
     </div>
   </div>
+</section>
+
+<!-- CERTIFICATE SECTION -->
+<section id="certificate" class="certificate-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Completion Certificate</h2>
+            <p>This is my completion certificate for the program. The official certificate is still in the process of being issued. Below is a placeholder image for now:</p>
+        </div>
+        <div class="clients-grid" style="display: flex; justify-content: center; align-items: center;">
+            <div class="client-item" style="max-width: 600px; width: 100%;">
+                <img src="images/Edna_Mosima_Kobo_crt_7734_1701954185-1.png" alt="Certificate Placeholder" style="width: 100%; height: auto; display: block;">
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- Footer -->
