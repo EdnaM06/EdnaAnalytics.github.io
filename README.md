@@ -1,11 +1,14 @@
 <p align="center">
-  <img src="https://github.com/EdnaM06/EdnaAnalytics.github.io/blob/main/images/background.png?raw=true" alt="Edna Kobo" width="300"/>
+  <img src="images/background .png" alt="Edna Kobo" width="300"/>
 </p>
 
-# Hi 👋
+<h1 align="center">Hi 👋, I'm Edna Kobo</h1>
 
-I'm **Edna Kobo**.  
-I enjoy learning and building projects in **BI Analytics**.  
-This GitHub is where I share my work and experiments.  
+<p align="center">
+I enjoy learning and building projects in <strong>Business Intelligence Analytics</strong>.  
+This GitHub is where I share my work and experiments.
+</p>
 
-📂 Check out my portfolio: [Portfolio Link](https://github.com/EdnaM06/EdnaAnalytics.github.io/tree/main)
+<p align="center">
+📂 Check out my portfolio: <a href="https://github.com/EdnaM06/EdnaAnalytics.github.io/tree/main">Portfolio Link</a>
+</p>
