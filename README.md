@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://github.com/EdnaM06/EdnaAnalytics.github.io/blob/main/images/background.png?raw=true" alt="Edna Kobo" width="300"/>
-</p>
-
 # Hi 👋
 
 I'm **Edna Kobo**.  
