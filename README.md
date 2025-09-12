@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/background .png" alt="Edna Kobo" width="300"/>
+  <img src="images/background .png" alt="Edna Kobo" width="500"/>
 </p>
 
 <h1 align="center">Hi 👋, I'm Edna Kobo</h1>
