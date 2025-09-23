@@ -35,55 +35,19 @@ a:hover { text-decoration: underline; }
 }
 .cv-left, .cv-right {
     flex: 1 1 45%;
-    background: rgba(0,0,0,0.5); /* shaded overlay for text visibility */
+    background: rgba(0,0,0,0.5);
     border-radius: 20px;
     padding: 30px;
     backdrop-filter: blur(12px);
     box-shadow: 0 10px 30px rgba(0,0,0,0.7);
 }
-h2, h3, h4 {
-    color: #41ba09;
-    margin-bottom: 15px;
-}
-h5 {
-    margin-bottom: 5px;
-    font-weight: 600;
-}
-.cv-left p, .cv-left li, .cv-right p, .cv-right li {
-    color: #ccc;
-    line-height: 1.5;
-}
-.cv-left ul, .cv-right ul {
-    padding-left: 0;
-    list-style: none;
-}
-.cv-left .contact-info li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-}
-.download-btn {
-    background-color: #41ba09;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 20px;
-    color: #fff;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 20px;
-    transition: 0.3s;
-    text-decoration: none;
-}
-.download-btn:hover { background-color: #195e04; }
+h2, h3, h4 { color: #41ba09; margin-bottom: 15px; }
+h5 { margin-bottom: 5px; font-weight: 600; }
+.cv-left p, .cv-left li, .cv-right p, .cv-right li { color: #ccc; line-height: 1.5; }
+.cv-left ul, .cv-right ul { padding-left: 0; list-style: none; }
+.cv-left .contact-info li { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
 
-.timeline-item {
-    margin-bottom: 20px;
-    padding-left: 20px;
-    position: relative;
-}
+.timeline-item { margin-bottom: 20px; padding-left: 20px; position: relative; }
 .timeline-item::before {
     content: '';
     position: absolute;
@@ -94,75 +58,27 @@ h5 {
     background-color: #41ba09;
     border-radius: 50%;
 }
-.skill-bar {
-    background: rgba(255,255,255,0.2);
-    border-radius: 12px;
-    margin-bottom: 10px;
-    overflow: hidden;
-    height: 12px;
-}
-.skill-fill {
-    height: 100%;
-    background-color: #41ba09;
-    border-radius: 12px;
-}
+.skill-bar { background: rgba(255,255,255,0.2); border-radius: 12px; margin-bottom: 10px; overflow: hidden; height: 12px; }
+.skill-fill { height: 100%; background-color: #41ba09; border-radius: 12px; }
 
-/* Certificate Section Styling */
-.certificate-section {
-    margin-top: 60px;
-    margin-bottom: 60px;
-}
-.certificate-section .section-header {
-    text-align: center;
-    background: rgba(0,0,0,0.5);
-    padding: 20px;
-    border-radius: 10px;
-}
-.certificate-section .section-header h2 {
-    color: #41ba09;
-    margin-bottom: 15px;
-}
-.certificate-section .section-header p {
-    color: #eee;
-    font-size: 1.1rem;
-}
-.certificate-section .clients-grid {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-}
-.certificate-section .client-item {
-    width: 100%;
-    max-width: 900px;
-    border-radius: 12px;
-    overflow: hidden;
-    background: rgba(0,0,0,0.3);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.certificate-section .client-item img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-}
-.certificate-section .client-item:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-}
+.certificate-section { margin-top: 60px; margin-bottom: 60px; }
+.certificate-section .section-header { text-align: center; background: rgba(0,0,0,0.5); padding: 20px; border-radius: 10px; }
+.certificate-section .section-header h2 { color: #41ba09; margin-bottom: 15px; }
+.certificate-section .section-header p { color: #eee; font-size: 1.1rem; }
+.certificate-section .clients-grid { display: flex; justify-content: center; margin-top: 40px; }
+.certificate-section .client-item { width: 100%; max-width: 900px; border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s; }
+.certificate-section .client-item img { width: 100%; height: auto; object-fit: contain; display: block; }
+.certificate-section .client-item:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
 
 @media (max-width: 992px) {
     .cv-container { flex-direction: column; }
     .cv-left, .cv-right { flex: 1 1 100%; }
 }
-@media (max-width: 768px) {
-    .certificate-section .client-item { max-width: 95%; }
-}
+@media (max-width: 768px) { .certificate-section .client-item { max-width: 95%; } }
 </style>
 </head>
 
-<body>
 <body style="padding-top: 70px;">
-<!-- CV Page -->
 <section class="cv-section">
   <div class="container cv-container">
 
@@ -173,17 +89,17 @@ h5 {
         <li><i class="bi bi-envelope"></i> ednamosima86@gmail.com</li>
         <li><i class="bi bi-link-45deg"></i> <a href="https://www.linkedin.com/in/edna-kobo" target="_blank">LinkedIn</a></li>
         <li><i class="bi bi-globe"></i> <a href="https://ednam06.github.io/" target="_blank">Portfolio</a></li>
-        <li><i class="bi bi-geo-alt"></i> Limpopo, Polokwane</li>
+        <li><i class="bi bi-geo-alt"></i> Limpopo, Polokwane, South Africa</li>
       </ul>
 
       <h3>Objective</h3>
-      <p>Eager Data Analyst skilled in SQL, Python, and data visualization. Passionate about contributing to data-driven decisions and developing further in analytics. Achieved a 20.53% loss rate reduction at BCX by transforming complex data into actionable insights. Proficient in dashboards, data management, and tools like Power BI and Tableau. Excel in remote collaboration, communication, and continuous learning.</p>
+      <p>Motivated data analyst specializing in transforming data into clear, data-driven narratives that aid decision-making. Proven ability to streamline data processes, improve accuracy, and collaborate effectively within teams, validated by measurable improvements during BCX and Telkom–Openserve internships. Passionate about continuous learning and contributing to business intelligence initiatives.</p>
 
       <h3>Strengths</h3>
       <ul>
-        <li><strong>Analytical Thinking:</strong> Proven ability to analyze complex datasets, leading to actionable insights.</li>
-        <li><strong>Effective Communication:</strong> Skilled in presenting complex data understandably.</li>
-        <li><strong>Team Collaboration:</strong> Improved data quality through effective teamwork.</li>
+        <li><strong>Analytical Thinking:</strong> Analyze complex datasets to produce actionable insights.</li>
+        <li><strong>Effective Communication:</strong> Present complex data clearly to colleagues and leadership.</li>
+        <li><strong>Team Collaboration:</strong> Improve data quality and decision-making through teamwork.</li>
       </ul>
 
       <div class="skills">
@@ -207,10 +123,6 @@ h5 {
         <li>Transforming data into actionable, compelling stories.</li>
         <li>Continuous learning and skill development in analytics.</li>
       </ul>
-
-      <a href="docs/Edna_Kobo_CV.pdf" class="download-btn" download>
-        <i class="bi bi-file-earmark-pdf-fill"></i> Download PDF
-      </a>
     </div>
 
     <!-- Right Column -->
@@ -218,52 +130,41 @@ h5 {
       <h3>Experience</h3>
 
       <div class="timeline-item">
-        <h5>Intern / BCX (Student Internship)</h5>
-        <p>08/2023 - 12/2023 | BCX Gauteng</p>
-        <ul>
-          <li>Focused on data analysis and visualization.</li>
-          <li>Analyzed Opportunity Win vs Loss project, achieving 20.53% loss rate metric.</li>
-          <li>Developed sales performance dashboard showing 47.49% 'Closed Won' opportunities.</li>
-        </ul>
+        <h5>BCX | Student Intern – Data Analytics</h5>
+        <p>08/2023 - 12/2023 | Remote</p>
+        <p>Analyzed survey ratings for Business Development and Service Managers, cleaned and visualized data using Excel and Power BI. Developed dashboards highlighting key trends to support colleagues in decision-making. Managed quotations with 85% accuracy and built a financial year sales dashboard to provide operational insights.</p>
       </div>
 
-    <div class="timeline-item">
-     <h5>Telkom / Openserve Internship</h5>
-       <p><strong>05/2024 – 04/2026</strong> | Gauteng</p>
-         <ul>
-            <li>Reduced quotation processing time by 30% through optimized data management.</li>
-            <li>Managed 500+ monthly quotations with 85% accuracy.</li>
-            <li>Collected and analyzed data to identify trends and business opportunities.</li>
-            <li>Conducted survey data analysis to evaluate Business Development Managers (BDMs) and Service Managers (SMs).</li>
-          </ul>
-        </div>
+      <div class="timeline-item">
+        <h5>Telkom – Openserve | Data & Sales Support Intern</h5>
+        <p>05/2024 – Present | Gauteng, South Africa (Hybrid)</p>
+        <p>Analyzed customer survey ratings to compare Business Development and Service Managers’ performance. Cleaned, transformed, and visualized data using Excel and Power BI. Created dashboards highlighting trends, prepared and managed quotations with 85% accuracy, and developed a financial year sales dashboard supporting colleagues in decision-making.</p>
+      </div>
 
       <h3>Education</h3>
       <div class="timeline-item">
         <h5>Data Science – Explore AI Academy</h5>
         <p>01/2023 - 12/2023 | Gauteng</p>
-        <ul>
-          <li>Completed NQF 5 certification focusing on data analytics, machine learning, and dashboards.</li>
-        </ul>
+        <p>NQF 5 certification in data analytics, machine learning, and dashboards.</p>
       </div>
 
       <h3>Projects</h3>
       <div class="timeline-item">
         <h5>Eskom Power Generation Dashboard</h5>
         <p>01/2023 | Gauteng</p>
-        <p>Created dashboard integrating infrastructure, capacity, efficiency, and Twitter data for operational insights.</p>
+        <p>Integrated infrastructure, capacity, efficiency, and Twitter data for actionable insights.</p>
       </div>
 
       <div class="timeline-item">
         <h5>Climate Change Sentiment Analysis</h5>
         <p>06/2023 | Gauteng</p>
-        <p>Analyzed public opinions to improve decision-making. Linear SVC model achieved 0.79 accuracy and 0.78 F1 score.</p>
+        <p>Analyzed public opinions using Linear SVC achieving 0.79 accuracy and 0.78 F1 score.</p>
       </div>
 
       <div class="timeline-item">
         <h5>EA Movie Recommendation System</h5>
         <p>07/2023 | Gauteng</p>
-        <p>Built recommender using MovieLens dataset, achieving Kaggle RMSE score of 0.78330 for predictions.</p>
+        <p>Built recommender using MovieLens dataset, achieving RMSE 0.78330 for predictions.</p>
       </div>
     </div>
   </div>
@@ -274,7 +175,7 @@ h5 {
     <div class="container">
         <div class="section-header">
             <h2>Completion Certificate</h2>
-            <p>This is my completion certificate for the program. The official certificate is still in the process of being issued. Below is a placeholder image for now:</p>
+            <p>Official certificate is pending; placeholder image shown below.</p>
         </div>
         <div class="clients-grid" style="display: flex; justify-content: center; align-items: center;">
             <div class="client-item" style="max-width: 600px; width: 100%;">
@@ -284,9 +185,8 @@ h5 {
     </div>
 </section>
 
-<!-- Footer -->
 <footer class="site-footer text-center py-4">
-  <p>&copy; 2025 Mosima Edna Kobo. All Rights Reserved.</p>
+  <p>&copy; 2025 Edna Kobo. All Rights Reserved.</p>
 </footer>
 
 <script src="js/bootstrap.bundle.min.js"></script>
