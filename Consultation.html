@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Edna Kobo | Book Consultation</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap & Icons -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #1f2937;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    .navbar { background-color: #1f2937; }
+    .navbar .nav-link { color: #fff; transition: 0.3s; }
+    .navbar .nav-link:hover { color: #41ba09; }
+    .navbar .navbar-brand { color: #41ba09; font-weight: 700; }
+
+    /* Buttons */
+    .custom-btn {
+      background-color: #30a80c;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      color: #fff;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .custom-btn:hover { background-color: #195e04; color: #fff; }
+
+    .section-padding { padding: 100px 0; }
+    .text-accent { color: #41ba09; }
+
+    /* Booking Section */
+    .booking-section { 
+      position: relative;
+      background: url('images/Beige Photocentric Minimalist Interior Designer Virtual Background.png') no-repeat center center;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .booking-overlay { 
+      position: absolute; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.6); z-index:1;
+    }
+
+    .booking-form-wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      background: rgba(27, 25, 25, 0.2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+      overflow: hidden;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .booking-form-left, .booking-form-right {
+      flex: 1 1 50%;
+      padding: 40px;
+    }
+
+    .booking-form-left {
+      color: #fff;
+    }
+
+    .booking-form-left h2 {
+      color: #41ba09;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    .booking-form-left em {
+      font-style: normal;
+      opacity: 0.8;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .booking-form .form-control {
+      border-radius: 12px;
+      margin-bottom: 20px;
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+    }
+    .booking-form .form-control::placeholder { color: rgba(255,255,255,0.7); }
+    .booking-form button {
+      background-color: #30a80c;
+      border: none;
+      font-weight: 600;
+      padding: 12px;
+      border-radius: 12px;
+      width: 100%;
+      transition: 0.3s;
+    }
+    .booking-form button:hover { background-color: #195e04; }
+
+    .booking-form-right img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/footer-bg.jpg') center/cover no-repeat;
+      color: #fff;
+      padding: 60px 0 30px;
+    }
+    .site-footer a { color: #30a80c; transition: 0.3s; }
+    .site-footer a:hover { color: #238107; }
+    .site-footer .social-icon { display: flex; gap: 15px; padding: 0; list-style: none; }
+    .site-footer .opening-hours-list li { margin-bottom: 8px; }
+
+    @media (max-width: 992px) {
+      .booking-form-wrap { flex-direction: column; padding: 30px; }
+      .booking-form-left, .booking-form-right { flex: 1 1 100%; padding: 20px; }
+    }
+    .bw-img {
+    width: 100%; /* adjust as needed */
+    max-width: 600px;
+    border-radius: 12px; /* optional */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* optional depth */
+    filter: grayscale(100%) contrast(1.2) brightness(1.05);
+    transition: transform 0.3s ease;
+}
+
+.bw-img:hover {
+    transform: scale(1.03); /* subtle zoom on hover */
+}
+.image-overlay-wrapper {
+  position: relative;
+  display: inline-block;
+  border-radius: 12px; /* optional rounded corners */
+  overflow: hidden;
+}
+
+.canon-style-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(100%) contrast(1.2) brightness(1);
+  transition: transform 0.3s ease;
+}
+
+.image-overlay-wrapper:hover .canon-style-img {
+  transform: scale(1.03);
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* adjust darkness */
+  pointer-events: none;
+}
+.booking-section { 
+  position: relative;
+  background: url('images/Beige Photocentric Minimalist Interior Designer Virtual Background.png') no-repeat center center;
+  background-size: cover; 
+  background-position: center bottom; /* shifts slightly up if needed */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  </style>
+</head>
+
+<body>
+  <body style="padding-top: 70px;">
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-accent" href="index.html">Edna Kobo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-lg-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html#section_1">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#section_2">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="youtube.html">Channel</a></li>
+          <li class="nav-item"><a class="nav-link" href="Client Page.html">Partnerships</a></li>
+        </ul>
+        <div class="ms-lg-3">
+          <a class="btn custom-btn" href="https://calendar.google.com/calendar">Book Free Consultation</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BOOKING SECTION -->
+<section class="booking-section section-padding">
+  <div class="booking-overlay"></div>
+  <div class="container">
+    <div class="booking-form-wrap" style="display:flex; flex-wrap:wrap; gap:30px;">
+
+      <!-- Left Form -->
+      <div class="booking-form-left" style="flex:1; min-width:300px;">
+        <em>Fill out the form below</em>
+        <h2>Book a Consultation</h2>
+
+        <!-- Booking Form -->
+        <form id="bookingForm" class="booking-form">
+          <div class="row">
+            <div class="col-lg-6 col-12">
+              <input type="text" name="first_name" class="form-control" placeholder="First Name" required>
+            </div>
+            <div class="col-lg-6 col-12">
+              <input type="text" name="last_name" class="form-control" placeholder="Last Name" required>
+            </div>
+            <div class="col-lg-6 col-12">
+              <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+            </div>
+            <div class="col-lg-6 col-12">
+              <input type="text" name="company" class="form-control" placeholder="Company Name">
+            </div>
+            <div class="col-lg-6 col-12">
+              <input type="date" name="date" class="form-control" required>
+            </div>
+            <div class="col-lg-6 col-12 time-tooltip">
+              <input type="time" name="time" class="form-control" required>
+            </div>
+            <div class="col-12">
+              <select name="service" class="form-control" required>
+                <option value="" disabled selected>Select Service</option>
+                <option value="dashboard">Dashboard & Reports</option>
+                <option value="data-cleaning">Data Cleaning & Preparation</option>
+                <option value="data-visualization">Data Visualization</option>
+                <option value="statistical-analysis">Natural Language Programming</option>
+                <option value="deep-tech">Advanced Analysis</option>
+                <option value="business-intelligence">Business Intelligence</option>
+                <option value="machine-learning">Python Programming</option>
+                <option value="consulting">General Consulting</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <textarea name="message" rows="3" class="form-control" placeholder="Additional Details (Optional)"></textarea>
+            </div>
+            <div class="col-12 mt-3">
+              <button type="submit">Submit</button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Thank You Message -->
+        <div id="thankYouMessage" style="display:none; margin-top:20px; color:#41ba09; font-weight:bold;">
+           Thank you! Your request has been sent.
+        </div>
+
+      </div>
+
+      <!-- Right Image -->
+      <div class="booking-form-right" style="flex:1; min-width:300px; position:relative;">
+        <div class="image-overlay-wrapper" style="position:relative;">
+          <img src="images/Edna 5 (2).png" alt="Consultation Image" class="canon-style-img" style="width:100%; border-radius:15px;">
+          <div class="overlay" style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.2); border-radius:15px;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- FOOTER -->
+<footer class="site-footer section-padding position-relative" style="background-color:#000;">
+  <video autoplay muted loop playsinline
+         style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:1;">
+    <source src="images/Main Page/12888892_1920_1080_30fps.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.85); z-index:2;"></div>
+  <div class="container position-relative" style="z-index:3; color:#fff;">
+    <div class="row">
+      <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+        <em class="d-block mb-2" style="color:#aaa;">Where to find Me?</em>
+        <strong><i class="bi-geo-alt me-2"></i> South Africa</strong>
+        <ul class="list-inline mt-3">
+          <li class="list-inline-item"><a href="#" class="bi-facebook" style="color:#41ba09; font-size:1.2rem;"></a></li>
+          <li class="list-inline-item"><a href="https://x.com/minthu" target="_blank" class="bi-twitter" style="color:#41ba09; font-size:1.2rem;"></a></li>
+          <li class="list-inline-item"><a href="#" class="bi-whatsapp" style="color:#41ba09; font-size:1.2rem;"></a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-12 mb-4 mb-lg-0">
+        <em class="d-block mb-2" style="color:#aaa;">Book Free Consultation</em>
+        <p class="mb-1"><strong>Schedule:</strong> <a href="https://calendar.google.com/calendar" target="_blank" style="color:#41ba09;">Book Free</a></p>
+        <p class="mb-0"><strong>Email:</strong> <a href="mailto:ednamosima86@gmail.com" style="color:#41ba09;">ednamosima86@gmail.com</a></p>
+      </div>
+      <div class="col-lg-5 col-12">
+        <em class="d-block mb-2" style="color:#aaa;">Working Hours</em>
+        <ul class="list-unstyled mb-0">
+          <li>Monday - Friday: <strong>9:00 - 17:00</strong></li>
+          <li>Saturday: <strong>Closed</strong></li>
+          <li>Sunday: <strong>Closed</strong></li>
+        </ul>
+      </div>
+      <div class="col-12 text-center mt-4">
+        <p class="mb-1" style="font-size:0.75rem; margin-top:30px;">&copy; 2025 Edna Kobo. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- Booking Form Script -->
+<script>
+document.getElementById("bookingForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const data = new FormData(form);
+
+  const response = await fetch("https://formspree.io/f/mjvnkqjq", {
+    method: "POST",
+    body: data,
+    headers: { "Accept": "application/json" }
+  });
+
+  if (response.ok) {
+    form.reset(); // clear all fields
+    document.getElementById("thankYouMessage").style.display = "block"; // show thank you
+    setTimeout(() => {
+      window.location.href = window.location.href.split('#')[0]; // reload current page
+    }, 3000); // wait 3 seconds before reload
+  } else {
+    alert("Oops! Something went wrong, please try again.");
+  }
+});
+</script>
+  <!-- Bootstrap JS to enable mobile menu -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+</script>
+</body>
+</html>

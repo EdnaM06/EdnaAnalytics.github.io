@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edna Kobo | CV</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- Bootstrap & Icons -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: url('images/pexels-pixabay-416320.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+}
+a { color: #41ba09; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.cv-container {
+    max-width: 1100px;
+    margin: 120px auto 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+}
+.cv-left, .cv-right {
+    flex: 1 1 45%;
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+}
+h2, h3, h4 { color: #41ba09; margin-bottom: 15px; }
+h5 { margin-bottom: 5px; font-weight: 600; }
+.cv-left p, .cv-left li, .cv-right p, .cv-right li { color: #ccc; line-height: 1.5; }
+.cv-left ul, .cv-right ul { padding-left: 0; list-style: none; }
+.cv-left .contact-info li { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+
+.timeline-item { margin-bottom: 20px; padding-left: 20px; position: relative; }
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background-color: #41ba09;
+    border-radius: 50%;
+}
+.skill-bar { background: rgba(255,255,255,0.2); border-radius: 12px; margin-bottom: 10px; overflow: hidden; height: 12px; }
+.skill-fill { height: 100%; background-color: #41ba09; border-radius: 12px; }
+
+.certificate-section { margin-top: 60px; margin-bottom: 60px; }
+.certificate-section .section-header { text-align: center; background: rgba(0,0,0,0.5); padding: 20px; border-radius: 10px; }
+.certificate-section .section-header h2 { color: #41ba09; margin-bottom: 15px; }
+.certificate-section .section-header p { color: #eee; font-size: 1.1rem; }
+.certificate-section .clients-grid { display: flex; justify-content: center; margin-top: 40px; }
+.certificate-section .client-item { width: 100%; max-width: 900px; border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s; }
+.certificate-section .client-item img { width: 100%; height: auto; object-fit: contain; display: block; }
+.certificate-section .client-item:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+
+@media (max-width: 992px) {
+    .cv-container { flex-direction: column; }
+    .cv-left, .cv-right { flex: 1 1 100%; }
+}
+@media (max-width: 768px) { .certificate-section .client-item { max-width: 95%; } }
+</style>
+</head>
+
+<body style="padding-top: 70px;">
+<section class="cv-section">
+  <div class="container cv-container">
+
+    <!-- Left Column -->
+    <div class="cv-left">
+      <h2>EDNA KOBO</h2>
+      <ul class="contact-info">
+        <li><i class="bi bi-envelope"></i> ednamosima86@gmail.com</li>
+        <li><i class="bi bi-link-45deg"></i> <a href="https://www.linkedin.com/in/edna-kobo" target="_blank">LinkedIn</a></li>
+        <li><i class="bi bi-globe"></i> <a href="https://ednam06.github.io/" target="_blank">Portfolio</a></li>
+        <li><i class="bi bi-geo-alt"></i> Limpopo, Polokwane, South Africa</li>
+      </ul>
+
+      <h3>Objective</h3>
+      <p>Motivated data analyst specializing in transforming data into clear, data-driven narratives that aid decision-making. Proven ability to streamline data processes, improve accuracy, and collaborate effectively within teams, validated by measurable improvements during BCX and Telkom–Openserve internships. Passionate about continuous learning and contributing to business intelligence initiatives.</p>
+
+      <h3>Strengths</h3>
+      <ul>
+        <li><strong>Analytical Thinking:</strong> Analyze complex datasets to produce actionable insights.</li>
+        <li><strong>Effective Communication:</strong> Present complex data clearly to colleagues and leadership.</li>
+        <li><strong>Team Collaboration:</strong> Improve data quality and decision-making through teamwork.</li>
+      </ul>
+
+      <div class="skills">
+        <h4>Skills</h4>
+        <p>Data Cleaning & Preparation</p>
+        <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
+
+        <p>Dashboard & Reports</p>
+        <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
+
+        <p>Data Analysis & Visualization</p>
+        <div class="skill-bar"><div class="skill-fill" style="width: 80%;"></div></div>
+
+        <p>Python & SQL</p>
+        <div class="skill-bar"><div class="skill-fill" style="width: 80%;"></div></div>
+      </div>
+
+      <h3>Passions</h3>
+      <ul>
+        <li>Analyzing data to identify trends and opportunities.</li>
+        <li>Transforming data into actionable, compelling stories.</li>
+        <li>Continuous learning and skill development in analytics.</li>
+      </ul>
+    </div>
+
+    <!-- Right Column -->
+    <div class="cv-right">
+      <h3>Experience</h3>
+
+      <div class="timeline-item">
+        <h5>BCX | Student Intern – Data Analytics</h5>
+        <p>08/2023 - 12/2023 | Remote</p>
+        <p>Analyzed survey ratings for Business Development and Service Managers, cleaned and visualized data using Excel and Power BI. Developed dashboards highlighting key trends to support colleagues in decision-making. Managed quotations with 85% accuracy and built a financial year sales dashboard to provide operational insights.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h5>Telkom – Openserve | Data & Sales Support Intern</h5>
+        <p>05/2024 – Present | Gauteng, South Africa (Hybrid)</p>
+        <p>Analyzed customer survey ratings to compare Business Development and Service Managers’ performance. Cleaned, transformed, and visualized data using Excel and Power BI. Created dashboards highlighting trends, prepared and managed quotations with 85% accuracy, and developed a financial year sales dashboard supporting colleagues in decision-making.</p>
+      </div>
+
+      <h3>Education</h3>
+      <div class="timeline-item">
+        <h5>Data Science – Explore AI Academy</h5>
+        <p>01/2023 - 12/2023 | Gauteng</p>
+        <p>NQF 5 certification in data analytics, machine learning, and dashboards.</p>
+      </div>
+
+      <h3>Projects</h3>
+      <div class="timeline-item">
+        <h5>Eskom Power Generation Dashboard</h5>
+        <p>01/2023 | Gauteng</p>
+        <p>Integrated infrastructure, capacity, efficiency, and Twitter data for actionable insights.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h5>Climate Change Sentiment Analysis</h5>
+        <p>06/2023 | Gauteng</p>
+        <p>Analyzed public opinions using Linear SVC achieving 0.79 accuracy and 0.78 F1 score.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h5>EA Movie Recommendation System</h5>
+        <p>07/2023 | Gauteng</p>
+        <p>Built recommender using MovieLens dataset, achieving RMSE 0.78330 for predictions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATE SECTION -->
+<section id="certificate" class="certificate-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Completion Certificate</h2>
+            <p>Official certificate is pending; placeholder image shown below.</p>
+        </div>
+        <div class="clients-grid" style="display: flex; justify-content: center; align-items: center;">
+            <div class="client-item" style="max-width: 600px; width: 100%;">
+                <img src="images/Edna_Mosima_Kobo_crt_7734_1701954185-1.png" alt="Certificate Placeholder" style="width: 100%; height: auto; display: block;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer text-center py-4">
+  <p>&copy; 2025 Edna Kobo. All Rights Reserved.</p>
+</footer>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
