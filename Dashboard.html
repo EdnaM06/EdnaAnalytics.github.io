@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard Showcase | Edna Kobo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap & Icons -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background:#1f2937;
+      color:#fff;
+      font-family:'Plus Jakarta Sans', sans-serif;
+    }
+
+    .text-accent { color:#41ba09; }
+
+    /* FILTER BUTTONS */
+    .filter-btn {
+      background: transparent;
+      border: 1px solid #41ba09;
+      color: #41ba09;
+      padding: 8px 18px;
+      border-radius: 25px;
+      margin: 5px;
+      transition: 0.3s;
+      font-size: 0.85rem;
+    }
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: #41ba09;
+      color: #000;
+    }
+
+    /* CARD BACKGROUND SUPPORT */
+    .dashboard-card { position: relative; overflow: hidden; }
+
+    /* dark overlay */
+    .dashboard-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.85));
+      z-index: 1;
+    }
+
+    /* background image or logo */
+    .card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: blur(3px);
+      opacity: 0.35;
+      z-index: 0;
+    }
+
+    /* keep content above */
+    .dashboard-card * { position: relative; z-index: 2; }
+
+    /* DASHBOARD CARD */
+    .dashboard-card {
+      background: rgba(54,54,54,0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 18px;
+      padding: 24px;
+      height: 100%;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .dashboard-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(38,202,5,0.45);
+    }
+
+    .dashboard-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(65,186,9,0.15);
+      color: #41ba09;
+      margin-bottom: 12px;
+    }
+
+    .dashboard-card p { font-size: 0.85rem; color: rgba(255,255,255,0.88); }
+
+    .view-btn { margin-top: 15px; font-size: 0.85rem; }
+
+    .hidden { display: none; }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<section class="py-5 text-center">
+  <div class="container">
+    <h1 class="text-accent mb-3">Dashboard Showcase</h1>
+    <p class="mb-4" style="max-width:750px;margin:auto;">
+      A curated collection of sector-focused dashboards designed to transform
+      complex datasets into clear, decision-ready insights.
+    </p>
+
+    <!-- SECTOR FILTERS -->
+    <div>
+      <button class="filter-btn active" onclick="filterDashboards('all', this)">All</button>
+      <button class="filter-btn" onclick="filterDashboards('labour', this)">Labour Market</button>
+      <button class="filter-btn" onclick="filterDashboards('sales', this)">Sales & Revenue</button>
+      <button class="filter-btn" onclick="filterDashboards('telecom', this)">Telecommunications</button>
+      <button class="filter-btn" onclick="filterDashboards('energy', this)">Energy & Utilities</button>
+      <button class="filter-btn" onclick="filterDashboards('customer', this)">Customer Performance</button>
+      <button class="filter-btn" onclick="filterDashboards('health', this)">Health</button>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD GRID -->
+<section class="pb-5">
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- LABOUR MARKET -->
+      <div class="col-md-6 col-lg-4 dashboard-item labour">
+        <div class="dashboard-card">
+          <div class="card-bg" style="background-image:url('images/backgrounds/youth-unemployment.jpg');"></div>
+          <span class="dashboard-tag">Labour Market Analytics</span>
+          <h5>South African Youth Unemployment Dashboard</h5>
+          <p>
+            Sector-based analysis of South African youth unemployment using QLFS
+            public data, highlighting demographic and regional workforce trends.
+          </p>
+          <div class="d-flex gap-2 flex-wrap">
+            <a href="https://microdata.worldbank.org/index.php/catalog/8011" target="_blank" class="btn custom-btn view-btn">
+              Dataset & Details <i class="bi-box-arrow-up-right ms-1"></i>
+            </a>
+            <a class="btn custom-btn view-btn disabled">
+              Upcoming <i class="bi-clock ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENERGY -->
+<div class="col-md-6 col-lg-4 dashboard-item energy">
+  <div class="dashboard-card">
+    <div class="card-bg" style="background-image:url('images/logos/eskom.png');"></div>
+    <span class="dashboard-tag">Energy & Utilities Analytics</span>
+    <h5>Eskom Performance Dashboard</h5>
+    <p>
+      Interactive dashboard visualizing electricity performance metrics and
+      demand trends to support operational insight.
+    </p>
+    <div class="d-flex gap-2 flex-wrap">
+      <!-- Dataset & Info button -->
+      <a href="https://www.energy.gov.za/" target="_blank" class="btn custom-btn view-btn">
+        Dataset & Info <i class="bi-box-arrow-up-right ms-1"></i>
+      </a>
+
+      <!-- View Dashboard button -->
+      <a href="#" class="btn custom-btn view-btn disabled">
+        View Dashboard <i class="bi-bar-chart-line ms-1"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+      <!-- SALES -->
+      <div class="col-md-6 col-lg-4 dashboard-item sales">
+        <div class="dashboard-card">
+          <div class="card-bg" style="background-image:url('images/icons/sales-chart.png');"></div>
+          <span class="dashboard-tag">Sales & Revenue Analytics</span>
+          <h5>Opportunity Win vs Loss</h5>
+          <p>
+            Sales performance dashboard analyzing won vs lost opportunities to
+            identify revenue trends and conversion drivers.
+          </p>
+          <a class="btn custom-btn view-btn disabled">
+            Confidential <i class="bi-lock-fill ms-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- CUSTOMER -->
+      <div class="col-md-6 col-lg-4 dashboard-item customer">
+        <div class="dashboard-card">
+          <div class="card-bg" style="background-image:url('images/icons/customer-insights.png');"></div>
+          <span class="dashboard-tag">Customer Performance</span>
+          <h5>Customer Survey Insights</h5>
+          <p>
+            Dashboard analyzing customer survey responses to evaluate service
+            quality and management performance.
+          </p>
+          <a class="btn custom-btn view-btn disabled">
+            Confidential <i class="bi-lock-fill ms-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- TELECOM -->
+      <div class="col-md-6 col-lg-4 dashboard-item telecom">
+        <div class="dashboard-card">
+          <div class="card-bg" style="background-image:url('images/icons/telecom-network.png');"></div>
+          <span class="dashboard-tag">Telecommunications Analytics</span>
+          <h5>Network & Service BI Dashboard</h5>
+          <p>
+            Business intelligence dashboard supporting telecom performance,
+            operational monitoring, and strategic insight.
+          </p>
+          <a class="btn custom-btn view-btn disabled">
+            Confidential <i class="bi-lock-fill ms-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- HEALTH CARDS -->
+      <div class="col-md-6 col-lg-4 dashboard-item health">
+        <div class="dashboard-card">
+          <div class="card-bg" style="background-image:url('images/backgrounds/global-health-map.jpg');"></div>
+          <span class="dashboard-tag">Health Analytics</span>
+          <h5>Global Obesity & Overweight Trends</h5>
+          <p>
+            Country-level dashboard tracking adult overweight and obesity trends
+            (BMI ≥ 25) using WHO data from Our World in Data.
+          </p>
+          <div class="d-flex gap-2 flex-wrap">
+            <a href="https://archive.ourworldindata.org/20250624-125417/grapher/share-of-adults-who-are-overweight.html" target="_blank"
+               class="btn custom-btn view-btn">
+              Dataset & Info <i class="bi-box-arrow-up-right ms-1"></i>
+            </a>
+            <a class="btn custom-btn view-btn disabled">
+              Upcoming <i class="bi-clock ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 dashboard-item health">
+        <div class="dashboard-card">
+          <div class="card-bg" style="background-image:url('images/backgrounds/children-health.jpg');"></div>
+          <span class="dashboard-tag">Health Analytics</span>
+          <h5>Global Children's Health Dashboard</h5>
+          <p>
+            Dashboard visualizing under-5 mortality, vaccination coverage, and
+            nutrition indicators using UNICEF Open Data.
+          </p>
+          <div class="d-flex gap-2 flex-wrap">
+            <a href="https://data.unicef.org/open-data/" target="_blank"
+               class="btn custom-btn view-btn">
+              Dataset & Info <i class="bi-box-arrow-up-right ms-1"></i>
+            </a>
+            <a class="btn custom-btn view-btn disabled">
+              Upcoming <i class="bi-clock ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- NETFLIX -->
+      <div class="col-md-6 col-lg-4 dashboard-item sales">
+        <div class="dashboard-card">
+          <div class="card-bg" style="background-image:url('images/NETFLIX LOGO.jpg');"></div>
+          <span class="dashboard-tag">Sales & Revenue Analytics</span>
+          <h5>Netflix Revenue & Content Analysis</h5>
+          <p>
+            Dashboard combining Netflix shows dataset with revenue & subscriber
+            trends to analyze content performance and growth patterns.
+          </p>
+          <div class="d-flex gap-2 flex-wrap">
+            <a href="https://www.kaggle.com/datasets/shivamb/netflix-shows" target="_blank" class="btn custom-btn view-btn">
+              Dataset & Info <i class="bi-box-arrow-up-right ms-1"></i>
+            </a>
+            <a class="btn custom-btn view-btn disabled">
+              Upcoming <i class="bi-clock ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILM INDUSTRY -->
+      <div class="col-md-6 col-lg-4 dashboard-item labour">
+        <div class="dashboard-card">
+          <div class="card-bg" style="background-image:url('images/backgrounds/film-industry.jpg');"></div>
+          <span class="dashboard-tag">Labour Market Analytics</span>
+          <h5>Film Industry Employment (US)</h5>
+          <p>
+            Dashboard analyzing employment trends in the US film & creative
+            industries using ILO, UNESCO, and other public datasets.
+          </p>
+          <div class="d-flex gap-2 flex-wrap">
+            <a href="https://ilostat.ilo.org/data/" target="_blank" class="btn custom-btn view-btn">
+              Dataset & Info <i class="bi-box-arrow-up-right ms-1"></i>
+            </a>
+            <a class="btn custom-btn view-btn disabled">
+              Upcoming <i class="bi-clock ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer section-padding position-relative" style="background-color:#000;">
+  <video autoplay muted loop playsinline
+         style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;">
+    <source src="images/Main Page/12888892_1920_1080_30fps.mp4" type="video/mp4">
+  </video>
+  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:2;"></div>
+
+  <div class="container position-relative" style="z-index:3; color:#fff;">
+    <div class="row justify-content-center text-center" style="padding-top: 60px;">
+
+      <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+        <em class="d-block mb-2" style="color:#aaa;">Where to find Me?</em>
+        <strong><i class="bi-geo-alt me-2"></i> South Africa</strong>
+        <ul class="list-inline mt-3">
+          <li class="list-inline-item"><a href="#" class="bi-facebook" style="color:#41ba09; font-size:1.2rem;"></a></li>
+          <li class="list-inline-item"><a href="https://x.com/" target="_blank" class="bi-twitter" style="color:#41ba09; font-size:1.2rem;"></a></li>
+          <li class="list-inline-item"><a href="#" class="bi-whatsapp" style="color:#41ba09; font-size:1.2rem;"></a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+        <em class="d-block mb-2" style="color:#aaa;">Book Free Consultation</em>
+        <p class="mb-1"><a href="https://calendar.app.google/y3SxkCmhb1qhMNm19" target="_blank" style="color:#41ba09;">Book Free</a></p>
+        <p class="mb-0"><strong>Email:</strong> <a href="mailto:ednamosima86@gmail.com" style="color:#41ba09;">ednamosima86@gmail.com</a></p>
+      </div>
+
+      <div class="col-lg-5 col-md-12">
+        <em class="d-block mb-2" style="color:#aaa;">Working Hours</em>
+        <ul class="list-unstyled mb-0">
+          <li>Monday - Friday: <strong>9:00 - 17:00</strong></li>
+          <li>Saturday: <strong>Closed</strong></li>
+          <li>Sunday: <strong>Closed</strong></li>
+        </ul>
+      </div>
+
+      <div class="col-12 text-center mt-4">
+        <p class="mb-1" style="font-size:0.75rem;">&copy; 2026 Edna Kobo. All Rights Reserved.</p>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<!-- JS -->
+<script>
+  function filterDashboards(category, el) {
+    const items = document.querySelectorAll('.dashboard-item');
+    const buttons = document.querySelectorAll('.filter-btn');
+
+    buttons.forEach(btn => btn.classList.remove('active'));
+    el.classList.add('active');
+
+    items.forEach(item => {
+      if (category === 'all' || item.classList.contains(category)) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+  }
+</script>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

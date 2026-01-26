@@ -63,7 +63,7 @@ button, .custom-btn {
 
 /* HERO SECTION */
 .hero-section {
-  background: url('images/Main Page/1.png') center/cover no-repeat;
+  background: url('images/new Background .png') center/cover no-repeat;
   min-height: 100vh; /* ensures full screen */
   display: flex;
   align-items: center; /* vertical alignment */
@@ -287,6 +287,36 @@ button, .custom-btn {
   .hero-content h3 { font-size: 1.2rem; }
   .skill-card { margin: auto; }
 }
+/* DASHBOARD CTA STYLING */
+.dashboard-cta {
+  background: rgba(54, 54, 54, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 40px 35px;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.45);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.dashboard-cta:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(38, 202, 5, 0.35);
+}
+
+.dashboard-cta p {
+  color: rgba(255,255,255,0.9);
+}
+
+.dashboard-cta .text-muted {
+  color: rgba(255,255,255,0.6) !important;
+}
+
+.dashboard-cta .btn-lg {
+  padding: 14px 34px;
+  font-size: 1.05rem;
+}
+
   </style>
 </head>
 
@@ -441,6 +471,42 @@ button, .custom-btn {
     </div>
   </div>
 </section>
+<!-- DASHBOARD SHOWCASE CTA -->
+<section class="section-padding" style="background:#1f2937;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+
+        <div class="dashboard-cta">
+          <div class="row align-items-center">
+            
+            <!-- Text -->
+            <div class="col-lg-8 col-12 mb-4 mb-lg-0">
+              <h2 class="text-accent mb-3">Dashboard Review</h2>
+              <p class="mb-3">
+                A curated collection of interactive <strong>Power BI</strong> and 
+                <strong>data analytics dashboards</strong> designed to turn complex datasets
+                into actionable insights.
+              </p>
+              <p class="small text-muted">
+                Public datasets • Business intelligence • Data storytelling
+              </p>
+            </div>
+
+            <!-- Button -->
+            <div class="col-lg-4 col-12 text-lg-end text-center">
+              <a href="Dashboard.html" class="btn custom-btn btn-lg">
+                View Dashboards <i class="bi-bar-chart-line ms-2"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- SwiperJS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
@@ -471,7 +537,7 @@ var swiper = new Swiper(".mySwiper", {
         <strong><i class="bi-geo-alt me-2"></i> South Africa</strong>
         <ul class="list-inline mt-3">
           <li class="list-inline-item"><a href="#" class="bi-facebook" style="color:#41ba09; font-size:1.2rem;"></a></li>
-          <li class="list-inline-item"><a href="https://x.com/minthu" target="_blank" class="bi-twitter" style="color:#41ba09; font-size:1.2rem;"></a></li>
+          <li class="list-inline-item"><a href="https://x.com/" target="_blank" class="bi-twitter" style="color:#41ba09; font-size:1.2rem;"></a></li>
           <li class="list-inline-item"><a href="#" class="bi-whatsapp" style="color:#41ba09; font-size:1.2rem;"></a></li>
         </ul>
       </div>
@@ -489,7 +555,7 @@ var swiper = new Swiper(".mySwiper", {
         </ul>
       </div>
       <div class="col-12 text-center mt-4">
-        <p class="mb-1" style="font-size:0.75rem;">&copy; 2025 Edna Kobo. All Rights Reserved.</p>
+        <p class="mb-1" style="font-size:0.75rem;">&copy; 2026 Edna Kobo. All Rights Reserved.</p>
       </div>
     </div>
   </div>
