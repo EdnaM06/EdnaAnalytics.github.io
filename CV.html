@@ -1,192 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Edna Kobo | CV</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edna Kobo | Digital CV Dashboard</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
 
-<!-- Bootstrap & Icons -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #41ba09;
+            --accent-purple: #7c3aed;
+            --bg-dark: #05070a;
+            --card-bg: rgba(15, 23, 42, 0.75);
+            --border: rgba(255, 255, 255, 0.1);
+        }
 
-<style>
-body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: url('images/pexels-pixabay-416320.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: #fff;
-    scroll-behavior: smooth;
-    margin: 0;
-    padding: 0;
-}
-a { color: #41ba09; text-decoration: none; }
-a:hover { text-decoration: underline; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
+                        url('images/pexels-pixabay-416320.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #f1f5f9;
+            scroll-behavior: smooth;
+        }
 
-.cv-container {
-    max-width: 1100px;
-    margin: 120px auto 50px auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 20px;
-}
-.cv-left, .cv-right {
-    flex: 1 1 45%;
-    background: rgba(0,0,0,0.5);
-    border-radius: 20px;
-    padding: 30px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-}
-h2, h3, h4 { color: #41ba09; margin-bottom: 15px; }
-h5 { margin-bottom: 5px; font-weight: 600; }
-.cv-left p, .cv-left li, .cv-right p, .cv-right li { color: #ccc; line-height: 1.5; }
-.cv-left ul, .cv-right ul { padding-left: 0; list-style: none; }
-.cv-left .contact-info li { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+        .premium-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 25px;
+            transition: all 0.4s ease;
+            height: 100%;
+        }
 
-.timeline-item { margin-bottom: 20px; padding-left: 20px; position: relative; }
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 5px;
-    width: 12px;
-    height: 12px;
-    background-color: #41ba09;
-    border-radius: 50%;
-}
-.skill-bar { background: rgba(255,255,255,0.2); border-radius: 12px; margin-bottom: 10px; overflow: hidden; height: 12px; }
-.skill-fill { height: 100%; background-color: #41ba09; border-radius: 12px; }
+        .premium-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
 
-.certificate-section { margin-top: 60px; margin-bottom: 60px; }
-.certificate-section .section-header { text-align: center; background: rgba(0,0,0,0.5); padding: 20px; border-radius: 10px; }
-.certificate-section .section-header h2 { color: #41ba09; margin-bottom: 15px; }
-.certificate-section .section-header p { color: #eee; font-size: 1.1rem; }
-.certificate-section .clients-grid { display: flex; justify-content: center; margin-top: 40px; }
-.certificate-section .client-item { width: 100%; max-width: 900px; border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s; }
-.certificate-section .client-item img { width: 100%; height: auto; object-fit: contain; display: block; }
-.certificate-section .client-item:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+        .objective-box {
+            background: linear-gradient(145deg, rgba(65, 186, 9, 0.05), rgba(124, 58, 237, 0.05));
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
 
-@media (max-width: 992px) {
-    .cv-container { flex-direction: column; }
-    .cv-left, .cv-right { flex: 1 1 100%; }
-}
-@media (max-width: 768px) { .certificate-section .client-item { max-width: 95%; } }
-</style>
+        .timeline-container { 
+            border-left: 2px solid rgba(65, 186, 9, 0.2); 
+            padding-left: 35px; 
+            position: relative; 
+            margin-left: 10px; 
+        }
+
+        .timeline-dot {
+            position: absolute; left: -44px; top: 5px;
+            width: 18px; height: 18px; background: var(--accent);
+            border-radius: 50%; box-shadow: 0 0 15px var(--accent);
+            z-index: 10; border: 4px solid #0f172a;
+        }
+
+        .profile-frame {
+            width: 130px; height: 130px; margin: 0 auto 20px auto;
+            border-radius: 50%; padding: 5px;
+            background: linear-gradient(45deg, var(--accent), var(--accent-purple));
+        }
+        .profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid #0f172a; }
+
+        .section-accent-header {
+            color: #fff; text-transform: uppercase; letter-spacing: 2px;
+            font-size: 0.75rem; font-weight: 800; display: flex; align-items: center; gap: 10px;
+        }
+        .section-accent-header::after { content: ""; flex-grow: 1; height: 1px; background: linear-gradient(to right, var(--accent), transparent); }
+
+        .project-tag {
+            background: rgba(255, 255, 255, 0.05); color: var(--accent);
+            font-size: 0.65rem; padding: 5px 12px; border-radius: 50px;
+            border: 1px solid rgba(65, 186, 9, 0.3); font-weight: 700;
+        }
+
+        .skill-bar-container { margin-bottom: 15px; }
+        .skill-info { display: flex; justify-content: space-between; font-size: 0.7rem; font-weight: 700; margin-bottom: 5px; color: #cbd5e1; }
+        .skill-progress { height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; }
+        .skill-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-purple)); border-radius: 10px; }
+
+        .strength-badge {
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
+            transition: 0.3s;
+        }
+        .strength-badge:hover { background: rgba(124, 58, 237, 0.2); }
+
+        .cert-img-wrap img { width: 100%; border-radius: 12px; border: 1px solid var(--border); }
+    </style>
 </head>
 
-<body style="padding-top: 70px;">
-<section class="cv-section">
-  <div class="container cv-container">
+<body style="padding-top: 60px;">
 
-    <!-- Left Column -->
-    <div class="cv-left">
-      <h2>EDNA KOBO</h2>
-      <ul class="contact-info">
-        <li><i class="bi bi-envelope"></i> ednamosima86@gmail.com</li>
-        <li><i class="bi bi-link-45deg"></i> <a href="https://www.linkedin.com/in/edna-kobo" target="_blank">LinkedIn</a></li>
-        <li><i class="bi bi-globe"></i> <a href="https://ednam06.github.io/" target="_blank">Portfolio</a></li>
-        <li><i class="bi bi-geo-alt"></i> Limpopo, Polokwane, South Africa</li>
-      </ul>
-
-      <h3>Objective</h3>
-      <p>Motivated data analyst specializing in transforming data into clear, data-driven narratives that aid decision-making. Proven ability to streamline data processes, improve accuracy, and collaborate effectively within teams, validated by measurable improvements during BCX and Telkom–Openserve internships. Passionate about continuous learning and contributing to business intelligence initiatives.</p>
-
-      <h3>Strengths</h3>
-      <ul>
-        <li><strong>Analytical Thinking:</strong> Analyze complex datasets to produce actionable insights.</li>
-        <li><strong>Effective Communication:</strong> Present complex data clearly to colleagues and leadership.</li>
-        <li><strong>Team Collaboration:</strong> Improve data quality and decision-making through teamwork.</li>
-      </ul>
-
-      <div class="skills">
-        <h4>Skills</h4>
-        <p>Data Cleaning & Preparation</p>
-        <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
-
-        <p>Dashboard & Reports</p>
-        <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
-
-        <p>Data Analysis & Visualization</p>
-        <div class="skill-bar"><div class="skill-fill" style="width: 80%;"></div></div>
-
-        <p>Python & SQL</p>
-        <div class="skill-bar"><div class="skill-fill" style="width: 80%;"></div></div>
-      </div>
-
-      <h3>Passions</h3>
-      <ul>
-        <li>Analyzing data to identify trends and opportunities.</li>
-        <li>Transforming data into actionable, compelling stories.</li>
-        <li>Continuous learning and skill development in analytics.</li>
-      </ul>
+<div class="container pb-5">
+    
+    <div class="objective-box">
+        <h1 class="display-4 fw-800 mb-0">EDNA <span style="color: var(--accent);">KOBO</span></h1>
+        <p class="text-uppercase small mb-4" style="letter-spacing: 4px; color: var(--accent-purple);">Data Analyst & Data Scientist</p>
+        
+        <div class="badge bg-success bg-opacity-10 text-success mb-3 p-2 px-4 border border-success border-opacity-25 rounded-pill">EXECUTIVE SUMMARY</div>
+        <p class="lead text-secondary mx-auto" style="max-width: 850px; font-size: 1.05rem; line-height: 1.7;">
+            Junior Data Analyst with hands-on experience in dashboard development, SQL analysis, and business performance reporting. Skilled at transforming raw data into clear, actionable insights and visualizations that support informed decision-making. Strong academic foundation in data science with a practical focus on analytics and operational insights.
+        </p>
     </div>
 
-    <!-- Right Column -->
-    <div class="cv-right">
-      <h3>Experience</h3>
+    <div class="row g-4">
+        <div class="col-lg-4">
+            <div class="premium-card">
+                <div class="profile-frame">
+                    <img src="images/HALF PIC.png" alt="Edna Kobo" class="profile-img">
+                </div>
+                
+                <h6 class="section-accent-header mb-4"> Core Skills</h6>
+                
+                <div class="skill-bar-container">
+                    <div class="skill-info"><span>Supervised Learning</span><span>85%</span></div>
+                    <div class="skill-progress"><div class="skill-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="skill-bar-container">
+                    <div class="skill-info"><span>Exploratory Data Analysis</span><span>90%</span></div>
+                    <div class="skill-progress"><div class="skill-fill" style="width: 90%;"></div></div>
+                </div>
+                <div class="skill-bar-container">
+                    <div class="skill-info"><span>SQL Querying</span><span>80%</span></div>
+                    <div class="skill-progress"><div class="skill-fill" style="width: 80%;"></div></div>
+                </div>
+                <div class="skill-bar-container">
+                    <div class="skill-info"><span>Natural Language Processing</span><span>75%</span></div>
+                    <div class="skill-progress"><div class="skill-fill" style="width: 75%;"></div></div>
+                </div>
 
-      <div class="timeline-item">
-        <h5>BCX | Student Intern – Data Analytics</h5>
-        <p>08/2023 - 12/2023 | Remote</p>
-        <p>Analyzed survey ratings for Business Development and Service Managers, cleaned and visualized data using Excel and Power BI. Developed dashboards highlighting key trends to support colleagues in decision-making. Managed quotations with 85% accuracy and built a financial year sales dashboard to provide operational insights.</p>
-      </div>
-
-      <div class="timeline-item">
-        <h5>Telkom – Openserve | Data & Sales Support Intern</h5>
-        <p>05/2024 – Present | Gauteng, South Africa (Hybrid)</p>
-        <p>Analyzed customer survey ratings to compare Business Development and Service Managers’ performance. Cleaned, transformed, and visualized data using Excel and Power BI. Created dashboards highlighting trends, prepared and managed quotations with 85% accuracy, and developed a financial year sales dashboard supporting colleagues in decision-making.</p>
-      </div>
-
-      <h3>Education</h3>
-      <div class="timeline-item">
-        <h5>Data Science – Explore AI Academy</h5>
-        <p>01/2023 - 12/2023 | Gauteng</p>
-        <p>NQF 5 certification in data analytics, machine learning, and dashboards.</p>
-      </div>
-
-      <h3>Projects</h3>
-      <div class="timeline-item">
-        <h5>Eskom Power Generation Dashboard</h5>
-        <p>01/2023 | Gauteng</p>
-        <p>Integrated infrastructure, capacity, efficiency, and Twitter data for actionable insights.</p>
-      </div>
-
-      <div class="timeline-item">
-        <h5>Climate Change Sentiment Analysis</h5>
-        <p>06/2023 | Gauteng</p>
-        <p>Analyzed public opinions using Linear SVC achieving 0.79 accuracy and 0.78 F1 score.</p>
-      </div>
-
-      <div class="timeline-item">
-        <h5>EA Movie Recommendation System</h5>
-        <p>07/2023 | Gauteng</p>
-        <p>Built recommender using MovieLens dataset, achieving RMSE 0.78330 for predictions.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CERTIFICATE SECTION -->
-<section id="certificate" class="certificate-section">
-    <div class="container">
-        <div class="section-header">
-            <h2>Completion Certificate</h2>
-            <p>Official certificate is pending; placeholder image shown below.</p>
+                <h6 class="section-accent-header mt-5 mb-3">Core Tools</h6>
+                <div class="d-flex flex-wrap gap-2">
+                    <span class="project-tag">Python</span><span class="project-tag">Power BI</span>
+                    <span class="project-tag">Anaconda</span><span class="project-tag">Pandas</span>
+                    <span class="project-tag">VS Code</span><span class="project-tag">Coding</span>
+                    <span class="project-tag">Github</span><span class="project-tag">version Control</span>
+                    <span class="project-tag">NLP</span><span class="project-tag">Excel VBA</span>
+                    <span class="project-tag">MySQL</span>
+                </div>
+            </div>
         </div>
-        <div class="clients-grid" style="display: flex; justify-content: center; align-items: center;">
-            <div class="client-item" style="max-width: 600px; width: 100%;">
-                <img src="images/Edna_Mosima_Kobo_crt_7734_1701954185-1.png" alt="Certificate Placeholder" style="width: 100%; height: auto; display: block;">
+
+       <div class="col-lg-8">
+  <div class="premium-card">
+
+    <h6 class="section-accent-header mb-5">Professional Journey</h6>
+    <div class="timeline-container">
+
+      <div class="mb-5 position-relative">
+        <div class="timeline-dot"></div>
+        <h5 class="fw-bold mb-1">Data &amp; Sales Support Intern</h5>
+        <p class="text-success small fw-bold mb-2">
+          Telkom – Openserve | 2024 — Present
+        </p>
+        <p class="small text-secondary">
+          Designed interactive dashboards and visual reports in Power BI, highlighting trends, performance gaps, and key areas for improvement.
+          Translated raw survey data into clear, actionable insights, enabling leadership to make informed operational and strategic decisions.
+        </p>
+      </div>
+
+      <div class="mb-4 position-relative">
+        <div class="timeline-dot"></div>
+        <h5 class="fw-bold mb-1 text-secondary">Student Intern – Data Analytics</h5>
+        <p class="text-secondary small fw-bold mb-2">
+          BCX | 2023
+        </p>
+        <p class="small text-secondary">
+          Contributed to the Opportunity Win vs Loss Insights project, achieving a reduction in the loss rate by 20.53%.
+          Developed a sales performance dashboard indicating that 47.49% of opportunities were “Closed Won.”
+        </p>
+      </div>
+
+    </div>
+
+    <h6 class="section-accent-header mb-5">Academic Background</h6>
+    <div class="timeline-container">
+      <div class="mb-4 position-relative">
+        <div class="timeline-dot" style="background: var(--accent-purple); box-shadow: 0 0 15px var(--accent-purple);"></div>
+        <h5 class="fw-bold mb-1">Data Science Program (NQF 5)</h5>
+        <p class="text-primary small fw-bold mb-0">
+          Explore AI Academy | 2023
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+        <div class="col-lg-12">
+            <div class="premium-card">
+                <div class="row">
+                    <div class="col-md-7 border-end border-white border-opacity-10">
+                        <h6 class="section-accent-header mb-4">Key Analytical Projects</h6>
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="fw-bold text-white">Eskom Loadsheading Forecaster</span>
+                                <i class="bi bi-lightning-charge text-warning"></i>
+                            </div>
+                            <p class="small text-secondary">Developed an integrated dashboard analyzing historical grid pressure and generation capacity using SQL and Power BI mapping.</p>
+                        </div>
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="fw-bold text-white">Telkom Sales Conversion Pipeline</span>
+                                <i class="bi bi-bar-chart-line text-success"></i>
+                            </div>
+                            <p class="small text-secondary">Designed an automated end-to-end pipeline tracking leads from quotation to installation, identifying regional performance bottlenecks.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-5 ps-md-4 mt-4 mt-md-0">
+                        <h6 class="section-accent-header mb-4">Professional Strengths</h6>
+                        <div class="strength-badge">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-search text-accent-purple fs-5"></i>
+                                <div>
+                                    <div class="small fw-bold text-white">Advanced Data Mining</div>
+                                    <div style="font-size: 0.7rem;" class="text-secondary">Expertise in extracting patterns from unstructured datasets.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="strength-badge">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-gear-wide-connected text-accent-purple fs-5"></i>
+                                <div>
+                                    <div class="small fw-bold text-white">Process Automation</div>
+                                    <div style="font-size: 0.7rem;" class="text-secondary">Streamlining manual workflows via VBA and Python scripts.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="strength-badge">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-chat-dots text-accent-purple fs-5"></i>
+                                <div>
+                                    <div class="small fw-bold text-white">Strategic Communication</div>
+                                    <div style="font-size: 0.7rem;" class="text-secondary">Translating technical metrics for non-technical stakeholders.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="premium-card text-center">
+                <h6 class="section-accent-header d-inline-block mb-3">Academic Validation</h6>
+                <div class="alert alert-warning py-2 border-0 bg-warning bg-opacity-10 text-warning x-small mb-4" style="border-radius: 12px; font-size: 0.7rem;">
+                    <i class="bi bi-info-circle me-1"></i> Physical certificate pending arrival; verified digital placeholder provided.
+                </div>
+                <div class="cert-img-wrap mb-4 mx-auto" style="max-width: 600px;">
+                    <img src="images/Edna_Mosima_Kobo_crt_7734_1701954185-1.png" class="shadow" alt="Explore AI Certificate">
+                </div>
+                <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-20 px-4 py-2">
+                    CERTIFIED DATA SCIENTIST & ANALYST
+                </span>
             </div>
         </div>
     </div>
-</section>
+</div>
 
-<footer class="site-footer text-center py-4">
-  <p>&copy; 2026 Edna Kobo. All Rights Reserved.</p>
+<footer class="text-center py-5 opacity-50 small">
+    &copy; 2026 Edna Kobo Portfolio
 </footer>
 
 <script src="js/bootstrap.bundle.min.js"></script>

@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Edna Kobo | YouTube</title>
 
   <!-- Google Fonts -->
@@ -12,186 +12,113 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-  <!-- Custom CSS -->
   <style>
+    :root { --accent: #41ba09; --dark: #1f2937; }
+
+    html,body { height:100%; margin:0; }
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #1f2937;
+      background-color: var(--dark);
       color: #fff;
-      margin: 0;
-      padding: 0;
     }
 
-    /* Navbar */
+    /* NAVBAR */
     .navbar {
       background-color: #111827;
     }
-    .navbar .nav-link {
-      color: #fff;
-      transition: 0.3s;
-    }
-    .navbar .nav-link:hover, .navbar .nav-link.active {
-      color: #41ba09;
-    }
-    .navbar .navbar-brand {
-      color: #41ba09;
-      font-weight: 700;
-    }
+    .navbar .nav-link { color: #fff; transition: .2s; }
+    .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--accent); }
+    .navbar .navbar-brand { color: var(--accent); font-weight:700; }
 
-    /* Hero Section */
+    /* HERO */
     .hero-section {
       position: relative;
       height: 70vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      text-align: center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      overflow:hidden;
     }
     .hero-section video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: translate(-50%, -50%);
-      z-index: 0;
+      position:absolute; inset:0;
+      width:100%; height:100%; object-fit:cover;
+      z-index:0;
     }
     .hero-section .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 1;
+      position:absolute; inset:0; background: rgba(0,0,0,0.5); z-index:1;
     }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      color: #fff;
-    }
-    .hero-content h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-bottom: 0.5rem;
-      color: #41ba09;
-    }
-    .hero-content .accent-line {
-      width: 60px;
-      height: 3px;
-      background: #41ba09;
-      margin: 0 auto 0.75rem;
-    }
-    .hero-content p {
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: #41ba09;
-      letter-spacing: 0.5px;
-      line-height: 1.5;
+    .hero-content { position:relative; z-index:2; max-width:900px; color:#fff; }
+    .hero-content h1 { font-size:2.6rem; font-weight:700; color:var(--accent); letter-spacing:2px; margin-bottom:.5rem; }
+    .hero-content .accent-line { width:60px; height:3px; background:var(--accent); margin:0 auto .75rem; }
+    .hero-content p { font-size:1.1rem; color:var(--accent); font-weight:500; }
+
+    /* YOUTUBE SECTION */
+    .youtube-section { padding:80px 15px; background: #0a0a0a; }
+    .youtube-section h2 { text-align:center; color:var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:2px; margin-bottom:30px; }
+
+    /* 2x2 grid on desktop/tablet, 1 column on small screens */
+    .youtube-grid {
+      display:grid;
+      grid-template-columns: repeat(2, minmax(320px, 1fr)); /* TWO columns */
+      gap:30px;
+      align-items:start;
+      justify-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
-    /* YouTube Section */
-    .youtube-section {
-      padding: 60px 15px;
-    }
-    .youtube-section h2 {
-      text-align: center;
-      margin-bottom: 50px;
-      color: #41ba09;
-    }
-    .youtube-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
     .youtube-video {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 */
-      height: 0;
-      overflow: hidden;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .youtube-video iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
+      position:relative;
+      border-radius:16px;
+      overflow:hidden;
+      background:#111;
+      border:1px solid rgba(255,255,255,0.06);
+      aspect-ratio:16/9;
+      box-shadow:0 10px 30px rgba(0,0,0,0.5);
+      transition: transform .3s ease, box-shadow .3s ease, border-color .2s;
       width: 100%;
-      height: 100%;
-      border: 0;
+      max-width: 560px;
     }
     .youtube-video:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(38, 202, 5, 0.6);
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--accent);
+      box-shadow:0 16px 40px rgba(65,186,9,0.12);
+    }
+    .youtube-video iframe {
+      width:100%; height:100%; border:0; display:block;
     }
 
-    /* Coming Soon Overlay */
-    .coming-soon-overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #41ba09;
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      z-index: 2;
-    }
-    .coming-soon-overlay .overlay-shade {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.6);
-      z-index: 1;
-    }
-    .coming-soon-overlay span {
-      position: relative;
-      z-index: 2;
-    }
+    /* Coming Soon overlay (covers the card) */
+    .coming-soon-overlay { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:2; pointer-events:none; }
+    .overlay-shade { position:absolute; inset:0; background: rgba(0,0,0,0.65); backdrop-filter: blur(4px); z-index:1; }
+    .coming-soon-overlay span { position:relative; z-index:3; color:#fff; font-weight:700; text-transform:uppercase; letter-spacing:2px; font-size:1rem; padding:8px 20px; border-radius:999px; border:2px solid var(--accent); background: rgba(65,186,9,0.08); }
+
+    /* Filter pills */
+    .filter-container { display:flex; justify-content:center; gap:12px; margin:30px 0 50px; flex-wrap:wrap; }
+    .pill-filter { background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); color:#fff; padding:10px 20px; border-radius:999px; cursor:pointer; text-decoration:none; transition: all .2s; display:inline-block; }
+    .pill-filter.active { background: rgba(65,186,9,0.1); border-color:var(--accent); box-shadow:0 0 14px rgba(65,186,9,0.12); }
 
     /* Footer */
-    .site-footer {
-      background-color: #000;
-      padding: 40px 15px;
-      text-align: center;
-      color: #fff;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    .site-footer a {
-      color: #41ba09;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .site-footer a:hover {
-      color: #30a80c;
-    }
-    .copyright-text {
-      font-size: 0.75rem;
-      margin-top: 20px;
+    .site-footer { background:#000; padding:40px 15px; text-align:center; color:#ddd; }
+    .site-footer a { color:var(--accent); }
+    .copyright-text { font-size:.75rem; margin-top:12px; color:#aaa; }
+
+    /* Responsive: 1 column on small screens */
+    @media (max-width: 720px) {
+      .youtube-grid { grid-template-columns: 1fr; padding: 0 12px; gap:20px; }
+      .hero-section { height: 50vh; }
+      .hero-content h1 { font-size:2rem; }
     }
   </style>
 </head>
-
-<body style="padding-top: 70px;">
+<body style="padding-top:70px;">
 
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">Edna Kobo</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -221,93 +148,155 @@
     </div>
   </section>
 
-  <!-- YOUTUBE VIDEOS -->
+  <!-- YOUTUBE / VIDEOS -->
   <section class="youtube-section">
-    <div class="container">
+    <div class="container text-center">
+      <div class="mb-3">
+        <span class="video-subtitle" style="display:inline-block; font-weight:700; color:#fff; background: rgba(124,58,237,0.08); padding:6px 14px; border-radius:999px; border:1px solid rgba(124,58,237,0.14);">INSIGHTS & DEMOS</span>
+      </div>
+
       <h2>Recent Videos</h2>
-      <div class="youtube-grid">
+      <p class="lead text-secondary mx-auto" style="max-width:700px; color:rgba(255,255,255,0.7); margin-bottom:28px;">
+        Explore the frontier of technology through our latest keynotes, tutorials and real-world digital transformation stories.
+      </p>
 
-        <!-- Video 1 -->
-        <div class="youtube-video">
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+      <div class="filter-container">
+        <a class="pill-filter active" href="javascript:void(0)" data-cat="all" onclick="filterDashboards('all', this)">All Content</a>
+        <a class="pill-filter" href="javascript:void(0)" data-cat="keynotes" onclick="filterDashboards('keynotes', this)">Keynotes</a>
+        <a class="pill-filter" href="javascript:void(0)" data-cat="tutorials" onclick="filterDashboards('tutorials', this)">Tutorials</a>
+        <a class="pill-filter" href="javascript:void(0)" data-cat="cases" onclick="filterDashboards('cases', this)">Case Studies</a>
+      </div>
+
+      <!-- 2 x 2 responsive grid -->
+      <div class="youtube-grid" id="youtubeGrid">
+        <!-- Top-left -->
+        <div class="youtube-video dashboard-item tutorials">
+          <iframe
+            title="Tutorial - Example 1"
+            loading="lazy"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
           <div class="coming-soon-overlay" style="background-image:url('images/youtube/pexels-ron-lach-9785031.jpg');">
             <div class="overlay-shade"></div>
             <span>Coming Soon</span>
           </div>
         </div>
 
-        <!-- Video 2 -->
-        <div class="youtube-video">
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        <!-- Top-right -->
+        <div class="youtube-video dashboard-item tutorials">
+          <iframe
+            title="Tutorial - Example 2"
+            loading="lazy"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
           <div class="coming-soon-overlay" style="background-image:url('images/youtube/pexels-ron-lach-9785031.jpg');">
             <div class="overlay-shade"></div>
             <span>Coming Soon</span>
           </div>
         </div>
 
-        <!-- Video 3 -->
-        <div class="youtube-video">
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        <!-- Bottom-left -->
+        <div class="youtube-video dashboard-item keynotes">
+          <iframe
+            title="Keynote - Example"
+            loading="lazy"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
           <div class="coming-soon-overlay" style="background-image:url('images/youtube/pexels-ron-lach-9785031.jpg');">
             <div class="overlay-shade"></div>
             <span>Coming Soon</span>
           </div>
         </div>
 
-        <!-- Video 4 -->
-        <div class="youtube-video">
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        <!-- Bottom-right -->
+        <div class="youtube-video dashboard-item tutorials">
+          <iframe
+            title="Tutorial - Example 3"
+            loading="lazy"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
           <div class="coming-soon-overlay" style="background-image:url('images/youtube/pexels-ron-lach-9785031.jpg');">
             <div class="overlay-shade"></div>
             <span>Coming Soon</span>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-<footer class="site-footer section-padding position-relative" style="background-color:#000;">
-  <video autoplay muted loop playsinline
-         style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:1;">
-    <source src="images/Main Page/12888892_1920_1080_30fps.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.85); z-index:2;"></div>
-  <div class="container position-relative" style="z-index:3; color:#fff;">
-    <div class="row">
-      <div class="col-lg-4 col-12 mb-4 mb-lg-0">
-        <em class="d-block mb-2" style="color:#aaa;">Where to find Me?</em>
-        <strong><i class="bi-geo-alt me-2"></i> South Africa</strong>
-        <ul class="list-inline mt-3">
-          <li class="list-inline-item"><a href="#" class="bi-facebook" style="color:#41ba09; font-size:1.2rem;"></a></li>
-          <li class="list-inline-item"><a href="https://x.com/" target="_blank" class="bi-twitter" style="color:#41ba09; font-size:1.2rem;"></a></li>
-          <li class="list-inline-item"><a href="#" class="bi-whatsapp" style="color:#41ba09; font-size:1.2rem;"></a></li>
-        </ul>
-      </div>
-      <div class="col-lg-3 col-12 mb-4 mb-lg-0">
-        <em class="d-block mb-2" style="color:#aaa;">Book Free Consultation</em>
-        <p class="mb-1"><strong>Schedule:</strong> <a href="https://calendar.app.google/y3SxkCmhb1qhMNm19" target="_blank" style="color:#41ba09;">Book Free</a></p>
-        <p class="mb-0"><strong>Email:</strong> <a href="mailto:ednamosima86@gmail.com" style="color:#41ba09;">ednamosima86@gmail.com</a></p>
-      </div>
-      <div class="col-lg-5 col-12">
-        <em class="d-block mb-2" style="color:#aaa;">Working Hours</em>
-        <ul class="list-unstyled mb-0">
-          <li>Monday - Friday: <strong>9:00 - 17:00</strong></li>
-          <li>Saturday: <strong>Closed</strong></li>
-          <li>Sunday: <strong>Closed</strong></li>
-        </ul>
-      </div>
-      <div class="col-12 text-center mt-4">
-        <p class="mb-1" style="font-size:0.75rem;">&copy; 2026 Edna Kobo. All Rights Reserved.</p>
+  <footer class="site-footer section-padding position-relative" style="background-color:#000;">
+    <video autoplay muted loop playsinline
+           style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;">
+      <source src="images/Main Page/12888892_1920_1080_30fps.mp4" type="video/mp4">
+    </video>
+
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:2;"></div>
+
+    <div class="container position-relative" style="z-index:3; color:#fff; padding:60px 15px;">
+      <div class="row">
+        <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+          <em class="d-block mb-2" style="color:#aaa;">Where to find Me?</em>
+          <strong><i class="bi-geo-alt me-2"></i> South Africa</strong>
+          <ul class="list-inline mt-3">
+            <li class="list-inline-item">
+              <a href="https://calendar.app.google/y3SxkCmhb1qhMNm19" target="_blank" rel="noopener noreferrer" class="bi-calendar-check" style="color:var(--accent); font-size:1.2rem;"></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/edna-kobo" target="_blank" rel="noopener noreferrer" class="bi-linkedin" style="color:var(--accent); font-size:1.2rem;"></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/EdnaM06" target="_blank" rel="noopener noreferrer" class="bi-github" style="color:var(--accent); font-size:1.2rem;"></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-12 mb-4 mb-lg-0">
+          <em class="d-block mb-2" style="color:#aaa;">Book Free Consultation</em>
+          <p class="mb-1"><strong>Schedule:</strong> <a href="https://calendar.app.google/y3SxkCmhb1qhMNm19" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">Book Free</a></p>
+          <p class="mb-0"><strong>Email:</strong> <a href="mailto:ednamosima86@gmail.com" style="color:var(--accent);">ednamosima86@gmail.com</a></p>
+        </div>
+
+        <div class="col-lg-5 col-12">
+          <em class="d-block mb-2" style="color:#aaa;">Working Hours</em>
+          <ul class="list-unstyled mb-0" style="color:#ddd;">
+            <li>Monday - Friday: <strong>9:00 - 17:00</strong></li>
+            <li>Saturday: <strong>Closed</strong></li>
+            <li>Sunday: <strong>Closed</strong></li>
+          </ul>
+        </div>
+
+        <div class="col-12 text-center mt-4">
+          <p class="mb-1" style="font-size:0.75rem;">&copy; 2026 Edna Kobo. All Rights Reserved.</p>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-  <!-- JS -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!-- Small JS: filter pills -->
+  <script>
+    function filterDashboards(category, el) {
+      document.querySelectorAll('.pill-filter').forEach(b => b.classList.remove('active'));
+      if (el) el.classList.add('active');
+
+      const items = document.querySelectorAll('.dashboard-item');
+      items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+          item.style.display = ''; // show
+        } else {
+          item.style.display = 'none'; // hide
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => filterDashboards('all', document.querySelector('.pill-filter.active')));
+  </script>
 </body>
 </html>

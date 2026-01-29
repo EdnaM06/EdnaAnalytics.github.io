@@ -13,73 +13,79 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      background:#1f2937;
-      color:#fff;
-      font-family:'Plus Jakarta Sans', sans-serif;
+    :root {
+      --accent: #41ba09;
+      --bg: #1f2937;
+      --card-bg-tint: rgba(40, 40, 40, 0.35);
     }
 
-    .text-accent { color:#41ba09; }
+    body {
+      background: var(--bg);
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .text-accent { color: var(--accent); }
 
     /* FILTER BUTTONS */
     .filter-btn {
       background: transparent;
-      border: 1px solid #41ba09;
-      color: #41ba09;
+      border: 1px solid var(--accent);
+      color: var(--accent);
       padding: 8px 18px;
       border-radius: 25px;
       margin: 5px;
-      transition: 0.3s;
+      transition: 0.22s;
       font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      cursor: pointer;
     }
     .filter-btn.active,
-    .filter-btn:hover {
-      background: #41ba09;
-      color: #000;
-    }
+    .filter-btn:hover { background: var(--accent); color: #000; }
 
-    /* CARD BACKGROUND SUPPORT */
-    .dashboard-card { position: relative; overflow: hidden; }
-
-    /* dark overlay */
-    .dashboard-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.85));
+    /* DASHBOARD CARD (consolidated) */
+    .dashboard-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      padding: 24px;
+      height: 100%;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      background: var(--card-bg-tint);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       z-index: 1;
     }
 
-    /* background image or logo */
+    .dashboard-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(38,202,5,0.35);
+    }
+
+    /* Background image (single authoritative rule) */
     .card-bg {
       position: absolute;
       inset: 0;
       background-size: cover;
       background-position: center;
-      filter: blur(3px);
-      opacity: 0.35;
-      z-index: 0;
+      opacity: 0.50;       /* clearer image */
+      filter: blur(1px); /* subtle softening */
+      z-index: -2;         /* behind overlay and content */
+      pointer-events: none;
     }
 
-    /* keep content above */
-    .dashboard-card * { position: relative; z-index: 2; }
-
-    /* DASHBOARD CARD */
-    .dashboard-card {
-      background: rgba(54,54,54,0.7);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 18px;
-      padding: 24px;
-      height: 100%;
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-    }
-
-    .dashboard-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 16px 40px rgba(38,202,5,0.45);
+    /* Subtle overlay between image and content */
+    .dashboard-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.18), rgba(0,0,0,0.35));
+      z-index: -1;
+      pointer-events: none;
     }
 
     .dashboard-tag {
@@ -87,16 +93,47 @@
       font-size: 0.7rem;
       padding: 4px 12px;
       border-radius: 20px;
-      background: rgba(65,186,9,0.15);
-      color: #41ba09;
+      background: rgba(65,186,9,0.12);
+      color: var(--accent);
       margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
     }
 
-    .dashboard-card p { font-size: 0.85rem; color: rgba(255,255,255,0.88); }
+    .dashboard-card h5 { position: relative; z-index: 1; margin-bottom: 6px; }
+    .dashboard-card p { font-size: 0.85rem; color: rgba(255,255,255,0.92); position: relative; z-index: 1; margin-bottom: 12px; }
 
-    .view-btn { margin-top: 15px; font-size: 0.85rem; }
+    .view-btn { margin-top: 12px; font-size: 0.85rem; position: relative; z-index: 1; cursor: pointer; }
 
-    .hidden { display: none; }
+    .hidden { display: none !important; }
+
+    /* Disabled buttons - semantic + visual */
+    .btn.disabled, .btn[disabled] {
+      opacity: 0.6;
+      border-color: #666;
+      color: #aaa !important;
+      pointer-events: none;
+    }
+
+    /* Custom button look */
+    .custom-btn {
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      background: transparent;
+      transition: 0.22s;
+      border-radius: 5px;
+      position: relative;
+      z-index: 1;
+    }
+    .custom-btn:hover { background: var(--accent); color: #000; }
+
+    /* layout helpers */
+    .d-flex.gap-2.flex-wrap { position: relative; z-index: 1; }
+
+    /* Responsive performance tip: hide heavy footer video on small screens */
+    @media (max-width: 768px) {
+      footer video { display: none; }
+    }
   </style>
 </head>
 
@@ -113,13 +150,13 @@
 
     <!-- SECTOR FILTERS -->
     <div>
-      <button class="filter-btn active" onclick="filterDashboards('all', this)">All</button>
-      <button class="filter-btn" onclick="filterDashboards('labour', this)">Labour Market</button>
-      <button class="filter-btn" onclick="filterDashboards('sales', this)">Sales & Revenue</button>
-      <button class="filter-btn" onclick="filterDashboards('telecom', this)">Telecommunications</button>
-      <button class="filter-btn" onclick="filterDashboards('energy', this)">Energy & Utilities</button>
-      <button class="filter-btn" onclick="filterDashboards('customer', this)">Customer Performance</button>
-      <button class="filter-btn" onclick="filterDashboards('health', this)">Health</button>
+      <button type="button" class="filter-btn active" onclick="filterDashboards('all', this)">All</button>
+      <button type="button" class="filter-btn" onclick="filterDashboards('labour', this)">Labour Market</button>
+      <button type="button" class="filter-btn" onclick="filterDashboards('sales', this)">Sales & Revenue</button>
+      <button type="button" class="filter-btn" onclick="filterDashboards('telecom', this)">Telecommunications</button>
+      <button type="button" class="filter-btn" onclick="filterDashboards('energy', this)">Energy & Utilities</button>
+      <button type="button" class="filter-btn" onclick="filterDashboards('customer', this)">Customer Performance</button>
+      <button type="button" class="filter-btn" onclick="filterDashboards('health', this)">Health</button>
     </div>
   </div>
 </section>
@@ -129,180 +166,120 @@
   <div class="container">
     <div class="row g-4">
 
-      <!-- LABOUR MARKET -->
+
       <div class="col-md-6 col-lg-4 dashboard-item labour">
         <div class="dashboard-card">
-          <div class="card-bg" style="background-image:url('images/backgrounds/youth-unemployment.jpg');"></div>
+          <div class="card-bg" style="background-image:url('images/unemployment.jpg');" aria-hidden="true"></div>
           <span class="dashboard-tag">Labour Market Analytics</span>
           <h5>South African Youth Unemployment Dashboard</h5>
-          <p>
-            Sector-based analysis of South African youth unemployment using QLFS
-            public data, highlighting demographic and regional workforce trends.
-          </p>
+          <p>Sector-based analysis of South African youth unemployment using QLFS public data.</p>
           <div class="d-flex gap-2 flex-wrap">
-            <a href="https://microdata.worldbank.org/index.php/catalog/8011" target="_blank" class="btn custom-btn view-btn">
-              Dataset & Details <i class="bi-box-arrow-up-right ms-1"></i>
-            </a>
-            <a class="btn custom-btn view-btn disabled">
-              Upcoming <i class="bi-clock ms-1"></i>
-            </a>
+            <a href="https://microdata.worldbank.org/index.php/catalog/8011" target="_blank" rel="noopener noreferrer" class="btn custom-btn view-btn">Dataset &amp; Details <i class="bi-box-arrow-up-right ms-1"></i></a>
+            <button type="button" class="btn custom-btn view-btn" data-bs-toggle="modal" data-bs-target="#projectModal" data-img="images/Screenshot%202024-09-20%20112022.png" onclick="updateModal(this)">View Image <i class="bi-image ms-1"></i></button>
           </div>
         </div>
       </div>
 
-      <!-- ENERGY -->
-<div class="col-md-6 col-lg-4 dashboard-item energy">
-  <div class="dashboard-card">
-    <div class="card-bg" style="background-image:url('images/logos/eskom.png');"></div>
-    <span class="dashboard-tag">Energy & Utilities Analytics</span>
-    <h5>Eskom Performance Dashboard</h5>
-    <p>
-      Interactive dashboard visualizing electricity performance metrics and
-      demand trends to support operational insight.
-    </p>
-    <div class="d-flex gap-2 flex-wrap">
-      <!-- Dataset & Info button -->
-      <a href="https://www.energy.gov.za/" target="_blank" class="btn custom-btn view-btn">
-        Dataset & Info <i class="bi-box-arrow-up-right ms-1"></i>
-      </a>
+      <div class="col-md-6 col-lg-4 dashboard-item energy">
+        <div class="dashboard-card">
+          <div class="card-bg" style="background-image:url('images/download (7).jpg');" aria-hidden="true"></div>
+          <span class="dashboard-tag">Energy & Utilities Analytics</span>
+          <h5>Eskom Performance Dashboard</h5>
+          <p>Interactive dashboard visualizing electricity performance metrics and demand trends.</p>
+          <div class="d-flex gap-2 flex-wrap">
+            <a href="https://www.energy.gov.za/" target="_blank" rel="noopener noreferrer" class="btn custom-btn view-btn">Dataset &amp; Info <i class="bi-box-arrow-up-right ms-1"></i></a>
+            <button type="button" class="btn custom-btn view-btn" data-bs-toggle="modal" data-bs-target="#projectModal" data-img="images/logos/eskom.png" onclick="updateModal(this)">View Image <i class="bi-image ms-1"></i></button>
+          </div>
+        </div>
+      </div>
 
-      <!-- View Dashboard button -->
-      <a href="#" class="btn custom-btn view-btn disabled">
-        View Dashboard <i class="bi-bar-chart-line ms-1"></i>
-      </a>
-    </div>
-  </div>
-</div>
 
-      <!-- SALES -->
       <div class="col-md-6 col-lg-4 dashboard-item sales">
         <div class="dashboard-card">
-          <div class="card-bg" style="background-image:url('images/icons/sales-chart.png');"></div>
+          <div class="card-bg" style="background-image:url('images/Multiple Unhealthy Traits Linked With Earlier Heart Attack And Stroke - WorldHealth_net.jpg');" aria-hidden="true"></div>
           <span class="dashboard-tag">Sales & Revenue Analytics</span>
           <h5>Opportunity Win vs Loss</h5>
-          <p>
-            Sales performance dashboard analyzing won vs lost opportunities to
-            identify revenue trends and conversion drivers.
-          </p>
-          <a class="btn custom-btn view-btn disabled">
-            Confidential <i class="bi-lock-fill ms-1"></i>
-          </a>
+          <p>Sales performance dashboard analyzing won vs lost opportunities to identify revenue trends.</p>
+          <button type="button" class="btn custom-btn view-btn disabled" aria-disabled="true" disabled>Confidential <i class="bi-lock-fill ms-1"></i></button>
         </div>
       </div>
 
-      <!-- CUSTOMER -->
+
       <div class="col-md-6 col-lg-4 dashboard-item customer">
         <div class="dashboard-card">
-          <div class="card-bg" style="background-image:url('images/icons/customer-insights.png');"></div>
+          <div class="card-bg" style="background-image:url('images/survey.jpg');" aria-hidden="true"></div>
           <span class="dashboard-tag">Customer Performance</span>
           <h5>Customer Survey Insights</h5>
-          <p>
-            Dashboard analyzing customer survey responses to evaluate service
-            quality and management performance.
-          </p>
-          <a class="btn custom-btn view-btn disabled">
-            Confidential <i class="bi-lock-fill ms-1"></i>
-          </a>
+          <p>Dashboard analyzing customer survey responses to evaluate service quality.</p>
+          <button type="button" class="btn custom-btn view-btn disabled" aria-disabled="true" disabled>Confidential <i class="bi-lock-fill ms-1"></i></button>
         </div>
       </div>
 
-      <!-- TELECOM -->
+
       <div class="col-md-6 col-lg-4 dashboard-item telecom">
         <div class="dashboard-card">
-          <div class="card-bg" style="background-image:url('images/icons/telecom-network.png');"></div>
+          <div class="card-bg" style="background-image:url('images/Gérer des projets complexes avec Microsoft Planner.jpg');" aria-hidden="true"></div>
           <span class="dashboard-tag">Telecommunications Analytics</span>
-          <h5>Network & Service BI Dashboard</h5>
-          <p>
-            Business intelligence dashboard supporting telecom performance,
-            operational monitoring, and strategic insight.
-          </p>
-          <a class="btn custom-btn view-btn disabled">
-            Confidential <i class="bi-lock-fill ms-1"></i>
-          </a>
+          <h5>Network &amp; Service BI Dashboard</h5>
+          <p>Business intelligence dashboard supporting telecom performance monitoring.</p>
+          <div class="d-flex gap-2 flex-wrap">
+            <a href="https://www.energy.gov.za/" target="_blank" rel="noopener noreferrer" class="btn custom-btn view-btn">Dataset &amp; Info <i class="bi-box-arrow-up-right ms-1"></i></a>
+            <button type="button" class="btn custom-btn view-btn" data-bs-toggle="modal" data-bs-target="#projectModal" data-img="images/logos/eskom.png" onclick="updateModal(this)">View Image <i class="bi-image ms-1"></i></button>
+          </div>
         </div>
       </div>
 
-      <!-- HEALTH CARDS -->
+
       <div class="col-md-6 col-lg-4 dashboard-item health">
         <div class="dashboard-card">
-          <div class="card-bg" style="background-image:url('images/backgrounds/global-health-map.jpg');"></div>
+          <div class="card-bg" style="background-image:url('images/ob.jpg');" aria-hidden="true"></div>
           <span class="dashboard-tag">Health Analytics</span>
-          <h5>Global Obesity & Overweight Trends</h5>
-          <p>
-            Country-level dashboard tracking adult overweight and obesity trends
-            (BMI ≥ 25) using WHO data from Our World in Data.
-          </p>
+          <h5>Global Obesity &amp; Overweight Trends</h5>
+          <p>Country-level dashboard tracking adult overweight and obesity trends using WHO data.</p>
           <div class="d-flex gap-2 flex-wrap">
-            <a href="https://archive.ourworldindata.org/20250624-125417/grapher/share-of-adults-who-are-overweight.html" target="_blank"
-               class="btn custom-btn view-btn">
-              Dataset & Info <i class="bi-box-arrow-up-right ms-1"></i>
-            </a>
-            <a class="btn custom-btn view-btn disabled">
-              Upcoming <i class="bi-clock ms-1"></i>
-            </a>
+            <a href="https://archive.ourworldindata.org/" target="_blank" rel="noopener noreferrer" class="btn custom-btn view-btn">Dataset &amp; Info <i class="bi-box-arrow-up-right ms-1"></i></a>
+            <button type="button" class="btn custom-btn view-btn" data-bs-toggle="modal" data-bs-target="#projectModal" data-img="images/backgrounds/global-health-map.jpg" onclick="updateModal(this)">View Image <i class="bi-image ms-1"></i></button>
           </div>
         </div>
       </div>
 
       <div class="col-md-6 col-lg-4 dashboard-item health">
         <div class="dashboard-card">
-          <div class="card-bg" style="background-image:url('images/backgrounds/children-health.jpg');"></div>
+          <div class="card-bg" style="background-image:url('images/download (8).jpg');" aria-hidden="true"></div>
           <span class="dashboard-tag">Health Analytics</span>
           <h5>Global Children's Health Dashboard</h5>
-          <p>
-            Dashboard visualizing under-5 mortality, vaccination coverage, and
-            nutrition indicators using UNICEF Open Data.
-          </p>
+          <p>Dashboard visualizing under-5 mortality and vaccination coverage using UNICEF data.</p>
           <div class="d-flex gap-2 flex-wrap">
-            <a href="https://data.unicef.org/open-data/" target="_blank"
-               class="btn custom-btn view-btn">
-              Dataset & Info <i class="bi-box-arrow-up-right ms-1"></i>
-            </a>
-            <a class="btn custom-btn view-btn disabled">
-              Upcoming <i class="bi-clock ms-1"></i>
-            </a>
+            <a href="https://data.unicef.org/open-data/" target="_blank" rel="noopener noreferrer" class="btn custom-btn view-btn">Dataset &amp; Info <i class="bi-box-arrow-up-right ms-1"></i></a>
+            <button type="button" class="btn custom-btn view-btn" data-bs-toggle="modal" data-bs-target="#projectModal" data-img="images/backgrounds/children-health.jpg" onclick="updateModal(this)">View Image <i class="bi-image ms-1"></i></button>
           </div>
         </div>
       </div>
 
-      <!-- NETFLIX -->
+
       <div class="col-md-6 col-lg-4 dashboard-item sales">
         <div class="dashboard-card">
-          <div class="card-bg" style="background-image:url('images/NETFLIX LOGO.jpg');"></div>
-          <span class="dashboard-tag">Sales & Revenue Analytics</span>
-          <h5>Netflix Revenue & Content Analysis</h5>
-          <p>
-            Dashboard combining Netflix shows dataset with revenue & subscriber
-            trends to analyze content performance and growth patterns.
-          </p>
+          <div class="card-bg" style="background-image:url('images/download (10).jpg');" aria-hidden="true"></div>
+          <span class="dashboard-tag">Sales &amp; Revenue Analytics</span>
+          <h5>Netflix Revenue &amp; Content Analysis</h5>
+          <p>Dashboard combining Netflix shows dataset with revenue &amp; subscriber trends.</p>
           <div class="d-flex gap-2 flex-wrap">
-            <a href="https://www.kaggle.com/datasets/shivamb/netflix-shows" target="_blank" class="btn custom-btn view-btn">
-              Dataset & Info <i class="bi-box-arrow-up-right ms-1"></i>
-            </a>
-            <a class="btn custom-btn view-btn disabled">
-              Upcoming <i class="bi-clock ms-1"></i>
-            </a>
+            <a href="https://www.kaggle.com/datasets/shivamb/netflix-shows" target="_blank" rel="noopener noreferrer" class="btn custom-btn view-btn">Dataset &amp; Info <i class="bi-box-arrow-up-right ms-1"></i></a>
+            <button type="button" class="btn custom-btn view-btn" data-bs-toggle="modal" data-bs-target="#projectModal" data-img="images/NETFLIX%20LOGO.jpg" onclick="updateModal(this)">View Image <i class="bi-image ms-1"></i></button>
           </div>
         </div>
       </div>
 
-      <!-- FILM INDUSTRY -->
+
       <div class="col-md-6 col-lg-4 dashboard-item labour">
         <div class="dashboard-card">
-          <div class="card-bg" style="background-image:url('images/backgrounds/film-industry.jpg');"></div>
+          <div class="card-bg" style="background-image:url('images/download (9).jpg');" aria-hidden="true"></div>
           <span class="dashboard-tag">Labour Market Analytics</span>
           <h5>Film Industry Employment (US)</h5>
-          <p>
-            Dashboard analyzing employment trends in the US film & creative
-            industries using ILO, UNESCO, and other public datasets.
-          </p>
+          <p>Analyzing employment trends in the US film &amp; creative industries using ILO datasets.</p>
           <div class="d-flex gap-2 flex-wrap">
-            <a href="https://ilostat.ilo.org/data/" target="_blank" class="btn custom-btn view-btn">
-              Dataset & Info <i class="bi-box-arrow-up-right ms-1"></i>
-            </a>
-            <a class="btn custom-btn view-btn disabled">
-              Upcoming <i class="bi-clock ms-1"></i>
-            </a>
+            <a href="https://ilostat.ilo.org/data/" target="_blank" rel="noopener noreferrer" class="btn custom-btn view-btn">Dataset &amp; Info <i class="bi-box-arrow-up-right ms-1"></i></a>
+            <button type="button" class="btn custom-btn view-btn" data-bs-toggle="modal" data-bs-target="#projectModal" data-img="images/backgrounds/film-industry.jpg" onclick="updateModal(this)">View Image <i class="bi-image ms-1"></i></button>
           </div>
         </div>
       </div>
@@ -326,16 +303,24 @@
         <em class="d-block mb-2" style="color:#aaa;">Where to find Me?</em>
         <strong><i class="bi-geo-alt me-2"></i> South Africa</strong>
         <ul class="list-inline mt-3">
-          <li class="list-inline-item"><a href="#" class="bi-facebook" style="color:#41ba09; font-size:1.2rem;"></a></li>
-          <li class="list-inline-item"><a href="https://x.com/" target="_blank" class="bi-twitter" style="color:#41ba09; font-size:1.2rem;"></a></li>
-          <li class="list-inline-item"><a href="#" class="bi-whatsapp" style="color:#41ba09; font-size:1.2rem;"></a></li>
+          <li class="list-inline-item">
+            <a href="https://calendar.app.google/y3SxkCmhb1qhMNm19" target="_blank" rel="noopener noreferrer" class="bi-calendar-check" style="color:var(--accent); font-size:1.2rem;"></a>
+          </li>
+
+          <li class="list-inline-item">
+            <a href="https://www.linkedin.com/in/edna-kobo" target="_blank" rel="noopener noreferrer" class="bi-linkedin" style="color:var(--accent); font-size:1.2rem;"></a>
+          </li>
+
+          <li class="list-inline-item">
+            <a href="https://github.com/EdnaM06" target="_blank" rel="noopener noreferrer" class="bi-github" style="color:var(--accent); font-size:1.2rem;"></a>
+          </li>
         </ul>
       </div>
 
       <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
         <em class="d-block mb-2" style="color:#aaa;">Book Free Consultation</em>
-        <p class="mb-1"><a href="https://calendar.app.google/y3SxkCmhb1qhMNm19" target="_blank" style="color:#41ba09;">Book Free</a></p>
-        <p class="mb-0"><strong>Email:</strong> <a href="mailto:ednamosima86@gmail.com" style="color:#41ba09;">ednamosima86@gmail.com</a></p>
+        <p class="mb-1"><a href="https://calendar.app.google/y3SxkCmhb1qhMNm19" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">Book Free</a></p>
+        <p class="mb-0"><strong>Email:</strong> <a href="mailto:ednamosima86@gmail.com" style="color:var(--accent);">ednamosima86@gmail.com</a></p>
       </div>
 
       <div class="col-lg-5 col-md-12">
@@ -355,14 +340,28 @@
   </div>
 </footer>
 
-<!-- JS -->
+<!-- Modal -->
+<div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content" style="background: #1f2937; border: 1px solid var(--accent);">
+      <div class="modal-header border-0 pb-0">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center p-4">
+        <img src="" id="modalImage" class="img-fluid rounded shadow-lg" alt="Project Preview">
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
+  // Filter dashboards by category
   function filterDashboards(category, el) {
     const items = document.querySelectorAll('.dashboard-item');
     const buttons = document.querySelectorAll('.filter-btn');
 
     buttons.forEach(btn => btn.classList.remove('active'));
-    el.classList.add('active');
+    if (el) el.classList.add('active');
 
     items.forEach(item => {
       if (category === 'all' || item.classList.contains(category)) {
@@ -372,6 +371,24 @@
       }
     });
   }
+
+  // Update modal image src (used by View Image buttons)
+  function updateModal(btn) {
+    const imgSrc = btn.getAttribute('data-img');
+    const modalImage = document.getElementById('modalImage');
+    if (modalImage && imgSrc) {
+      modalImage.src = imgSrc;
+      modalImage.alt = 'Preview: ' + imgSrc.split('/').pop();
+    }
+  }
+
+  // Optional: Ensure modal image clears when closed (small cleanup)
+  document.addEventListener('hidden.bs.modal', function (event) {
+    if (event.target && event.target.id === 'projectModal') {
+      const modalImage = document.getElementById('modalImage');
+      if (modalImage) modalImage.src = '';
+    }
+  });
 </script>
 
 <script src="js/bootstrap.bundle.min.js"></script>
