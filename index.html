@@ -564,26 +564,39 @@ button,
     border-radius: 12px;
     padding: 10px 25px;
     border: none;
-}
+  }
+    /* Green modal dismiss button hover */
+    .modal .btn-dismiss-green {
+        background-color: #41ba09;
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        padding: 10px 25px;
+        font-weight: 700;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .modal .btn-dismiss-green:hover {
+        background-color: #63d233; /* slightly brighter green */
+        transform: translateY(-2px); /* subtle lift effect */
+    }
+
 </style>
 
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-
+<!-- NAVBAR (fixed + mobile-close) -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom">
+  <div class="container container-max">
     <!-- Brand -->
-    <a class="navbar-brand fw-bold text-accent" href="#section_1">
-      Edna Kobo
-    </a>
+    <a class="navbar-brand" href="index.html">
+        EDNA <span style="color: var(--accent);">KOBO</span>
+      </a>
 
     <!-- Mobile Toggle -->
-    <button
-      class="navbar-toggler"
-      type="button"
+    <button class="navbar-toggler" type="button"
       data-bs-toggle="collapse"
       data-bs-target="#navbarNav"
       aria-controls="navbarNav"
@@ -592,44 +605,25 @@ button,
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Menu -->
+    <!-- Menu + CTA -->
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
-        <li class="nav-item">
-          <a class="nav-link" href="#section_1">Home</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#section_2">About</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#skills">Skills</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#projects">Projects</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="youtube.html">Channel</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="Client Page.html">Partnerships</a>
-        </li>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#section_1">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#section_2">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="Youtube.html">Channel</a></li>
+        <li class="nav-item"><a class="nav-link" href="Client Page.html">Partnerships</a></li>
       </ul>
 
-      <!-- CTA Button -->
+      <!-- CTA Button (kept inside collapse so it stacks nicely on mobile) -->
       <div class="ms-lg-3 mt-3 mt-lg-0">
         <a class="btn btn-success w-100 w-lg-auto" href="Consultation.html">
           Book Free <i class="bi bi-arrow-up-right ms-2"></i>
         </a>
       </div>
-    </div>
-
-  </div>
+    </div> <!-- /.collapse -->
+  </div> <!-- /.container -->
 </nav>
 
 <!-- HERO -->
@@ -884,9 +878,6 @@ button,
 </section>
 
 
-<!-- Bootstrap 5 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 <!-- FOOTER -->
 <footer class="site-footer section-padding position-relative" style="background-color:#000;">
   <video autoplay muted loop playsinline style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:1;">
@@ -1004,14 +995,37 @@ button,
                     <i class="bi bi-arrow-clockwise me-1"></i> Last Update: 14:20 PM
                 </div>
                 <div>
-                    <button type="button" class="btn text-white fw-bold me-2" data-bs-dismiss="modal">Dismiss</button>
-                    <button type="button" class="btn btn-export">Export Full Report</button>
+                <div>
+                  <button type="button" class="btn btn-dismiss-green" data-bs-dismiss="modal">
+                   Dismiss
+                 </button>
+                   </div>
                 </div>
+
             </div>
 
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const navbarCollapse = document.getElementById('navbarNav');
+
+  // Close only when a nav-link is clicked (delegated)
+  navbarCollapse.addEventListener('click', function(e) {
+    // If a direct nav link was clicked (or inner element), find nearest .nav-link
+    const link = e.target.closest('.nav-link');
+    if (!link) return;
+
+    // If collapsed is open, hide it
+    if (navbarCollapse.classList.contains('show')) {
+      const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+      bsCollapse.hide();
+    }
+  });
+});
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
